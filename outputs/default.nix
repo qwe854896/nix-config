@@ -28,8 +28,8 @@
   args = {inherit inputs lib mylib myvars genSpecialArgs;};
 
   nixosSystems = {
-    aarch64-linux = import ./aarch64-linux (args // {system = "aarch64-linux";});
-    i686-linux = import ./i686-linux (args // {system = "i686-linux";});
+    # aarch64-linux = import ./aarch64-linux (args // {system = "aarch64-linux";});
+    # i686-linux = import ./i686-linux (args // {system = "i686-linux";});
     x86_64-linux = import ./x86_64-linux (args // {system = "x86_64-linux";});
   };
   darwinSystems = {

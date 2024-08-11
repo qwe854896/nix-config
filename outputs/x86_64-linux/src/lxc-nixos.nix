@@ -17,7 +17,7 @@
       (map mylib.relativeToRoot [
         # common
         "modules/nixos/server/server.nix"
-        "modules/nixos/server/proxmox-lxc-hardware-configuration.nix"
+        "modules/nixos/server/lxc-container.nix"
         # host specific
         "hosts/${name}"
       ])

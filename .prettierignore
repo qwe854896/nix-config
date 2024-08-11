@@ -1,0 +1,9 @@
+LICENSE.md
+dist
+pnpm-lock.yaml
+flake.lock
+lazy-lock.json
+vercel.json
+cache
+temp
+.temp

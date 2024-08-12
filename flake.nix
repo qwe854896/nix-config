@@ -40,6 +40,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # install vscode server on nixos
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # TODO: Add more inputs here
   };
 }

@@ -12,25 +12,46 @@
 } @ args: let
   name = "siber";
 
-  modules = {
+  base-modules = {
     nixos-modules =
       (map mylib.relativeToRoot [
         # common
-        "modules/nixos/server/server.nix"
+        "modules/nixos/desktop.nix"
         # host specific
         "hosts/${name}"
       ])
       ++ [
       ];
     home-modules = map mylib.relativeToRoot [
-      "home/linux/core.nix"
-      "home/base/tui"
+      "home/linux/gui.nix"
       "hosts/${name}/home.nix"
     ];
   };
 
-  systemArgs = modules // args;
+  modules-plasma6 = {
+    nixos-modules =
+      [
+        {
+          modules.desktop.wayland.enable = true;
+        }
+      ]
+      ++ base-modules.nixos-modules;
+    home-modules =
+      [
+        {
+          modules.desktop.plasma6.enable = true;
+        }
+      ]
+      ++ base-modules.home-modules;
+  };
 in {
   # NixOS's configuration
-  nixosConfigurations.${name} = mylib.nixosSystem systemArgs;
+  nixosConfigurations = {
+    # With KDE Plasma 6
+    "${name}" = mylib.nixosSystem (modules-plasma6 // args);
+  };
+
+  packages = {
+    "${name}" = inputs.self.nixosConfigurations."${name}".config.formats.iso;
+  };
 }

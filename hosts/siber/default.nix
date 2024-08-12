@@ -25,24 +25,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Asia/Taipei";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "zh_TW.UTF-8";
-    LC_IDENTIFICATION = "zh_TW.UTF-8";
-    LC_MEASUREMENT = "zh_TW.UTF-8";
-    LC_MONETARY = "zh_TW.UTF-8";
-    LC_NAME = "zh_TW.UTF-8";
-    LC_NUMERIC = "zh_TW.UTF-8";
-    LC_PAPER = "zh_TW.UTF-8";
-    LC_TELEPHONE = "zh_TW.UTF-8";
-    LC_TIME = "zh_TW.UTF-8";
-  };
-
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
@@ -81,9 +63,6 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jhc = {
-    isNormalUser = true;
-    description = "Jun-Hong Cheng";
-    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       kdePackages.kate
       #  thunderbird
@@ -92,21 +71,6 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # Enable Flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-    curl
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -117,15 +81,6 @@
   # };
 
   # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

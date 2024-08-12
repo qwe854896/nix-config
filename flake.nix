@@ -46,6 +46,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # install nix-gaming
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
     # TODO: Add more inputs here
   };
 }

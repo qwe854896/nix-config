@@ -10,26 +10,28 @@
   genSpecialArgs,
   ...
 } @ args: let
-  name = "lxc-nixos";
+  name = "ipro";
 
   modules = {
-    nixos-modules =
+    darwin-modules =
       (map mylib.relativeToRoot [
         # common
-        "modules/nixos/server/server.nix"
-        "modules/nixos/server/lxc-container.nix"
+        "modules/darwin"
         # host specific
-        "hosts/${name}"
+        "hosts/darwin-${name}"
       ])
-      ++ [
-      ];
+      ++ [];
+
     home-modules = map mylib.relativeToRoot [
-      "home/linux/core.nix"
+      # common
+      "home/darwin"
+      # host specific
+      "hosts/darwin-${name}/home.nix"
     ];
   };
 
   systemArgs = modules // args;
 in {
-  # NixOS's configuration
-  nixosConfigurations.${name} = mylib.nixosSystem systemArgs;
+  # macOS's configuration
+  darwinConfigurations.${name} = mylib.macosSystem systemArgs;
 }

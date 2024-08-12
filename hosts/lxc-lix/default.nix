@@ -1,5 +1,5 @@
 {mylib, ...}: let
-  hostName = "lxc-nixos"; # Define your hostname.
+  hostName = "lix"; # Define your hostname.
 in {
   imports =
     mylib.scanPaths ./.;

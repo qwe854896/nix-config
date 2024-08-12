@@ -124,6 +124,8 @@
       enableBashIntegration = true;
       enableZshIntegration = true;
       enableNushellIntegration = true;
+      # https://github.com/atuinsh/atuin/issues/952
+      settings.daemon.enabled = true;
     };
   };
 }

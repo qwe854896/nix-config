@@ -1,6 +1,6 @@
 {lib, ...}: {
-  # TODO: Add nixosSystem here
   macosSystem = import ./macosSystem.nix;
+  nixosSystem = import ./nixosSystem.nix;
 
   # use path relative to the root of the project
   relativeToRoot = lib.path.append ../.;

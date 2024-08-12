@@ -1,7 +1,7 @@
 {
   lib,
   inputs,
-  darwin-modules,
+  nixos-modules,
   home-modules ? [],
   myvars,
   system,
@@ -9,21 +9,19 @@
   specialArgs ? (genSpecialArgs system),
   ...
 }: let
-  inherit (inputs) nixpkgs-darwin home-manager nix-darwin;
+  inherit (inputs) nixpkgs home-manager nixos-generators;
 in
-  nix-darwin.lib.darwinSystem {
+  nixpkgs.lib.nixosSystem {
     inherit system specialArgs;
     modules =
-      darwin-modules
+      nixos-modules
       ++ [
-        ({lib, ...}: {
-          nixpkgs.pkgs = import nixpkgs-darwin {inherit system;};
-        })
+        nixos-generators.nixosModules.all-formats
       ]
       ++ (
         lib.optionals ((lib.lists.length home-modules) > 0)
         [
-          home-manager.darwinModules.home-manager
+          home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

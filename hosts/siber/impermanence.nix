@@ -37,6 +37,7 @@
 
       "/var/log"
       "/var/lib"
+      "/var/db/sudo/lectured"
 
       "/tmp"
 
@@ -85,6 +86,7 @@
         # vscode
         ".vscode"
         ".vscode-insiders"
+        ".vscode-server"
         ".config/Code/User"
         ".config/Code - Insiders/User"
 
@@ -102,6 +104,9 @@
 
         # neovim plugins
         ".config/github-copilot"
+
+        # sunshine
+        ".config/sunshine"
       ];
     };
   };

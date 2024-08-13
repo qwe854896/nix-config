@@ -50,7 +50,7 @@
   #================================= Misc =================================
 
   services = {
-    printing.enable = true; # Enable CUPS to print documents.
+    # printing.enable = true; # Enable CUPS to print documents.
     geoclue2.enable = true; # Enable geolocation services.
 
     # Enable touchpad support (enabled default in most desktopManager).
@@ -71,8 +71,8 @@
       keyboards.default.settings = {
         main = {
           # overloads the capslock key to function as both escape (when tapped) and control (when held)
-          capslock = "overload(control, esc)";
-          esc = "capslock";
+          # capslock = "overload(control, esc)";
+          # esc = "capslock";
         };
       };
     };

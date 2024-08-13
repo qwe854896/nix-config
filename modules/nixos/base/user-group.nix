@@ -34,6 +34,7 @@
       "wireshark"
       "adbusers"
       "libvirtd"
+      "input" # used by sunshine
     ];
   };
 

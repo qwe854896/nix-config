@@ -8,8 +8,8 @@
   # which enable a bunch of compatibility options that should make the themes load in all situations.
 
   home.pointerCursor = {
-    # gtk.enable = true;
-    # x11.enable = true;
+    gtk.enable = true;
+    x11.enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
     size = 24;
@@ -28,7 +28,7 @@
   #   2. ~/.config/gtk-3.0/settings.ini
   #   3. ~/.config/gtk-4.0/settings.ini
   gtk = {
-    # enable = true;
+    enable = true;
 
     font = {
       name = "Noto Sans";

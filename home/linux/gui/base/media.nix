@@ -28,11 +28,11 @@
   '';
 
   programs = {
-    # mpv = {
-    #   enable = true;
-    #   defaultProfiles = ["gpu-hq"];
-    #   scripts = [pkgs.mpvScripts.mpris];
-    # };
+    mpv = {
+      enable = false;
+      defaultProfiles = ["gpu-hq"];
+      scripts = [pkgs.mpvScripts.mpris];
+    };
   };
 
   services = {

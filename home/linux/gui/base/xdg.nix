@@ -14,7 +14,7 @@
 
   xdg.configFile."mimeapps.list".force = true;
   xdg = {
-    enable = false;
+    enable = true;
 
     cacheHome = "${config.home.homeDirectory}/.cache";
     configHome = "${config.home.homeDirectory}/.config";
@@ -82,7 +82,7 @@
     };
 
     userDirs = {
-      enable = false;
+      enable = true;
       createDirectories = true;
       extraConfig = {
         XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";

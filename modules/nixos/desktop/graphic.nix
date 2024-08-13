@@ -1,17 +1,17 @@
 {pkgs, ...}: {
   xdg.portal = {
-    enable = true;
+    # enable = true;
 
     config = {
       common = {
         # Use xdg-desktop-portal-gtk for every portal interface...
         default = [
-          "gtk"
+          # "gtk"
         ];
         # except for the secret portal, which is handled by gnome-keyring
-        "org.freedesktop.impl.portal.Secret" = [
-          "gnome-keyring"
-        ];
+        # "org.freedesktop.impl.portal.Secret" = [
+        #   "gnome-keyring"
+        # ];
       };
     };
 
@@ -21,10 +21,10 @@
     # xdg-open is used by almost all programs to open a unknown file/uri
     # alacritty as an example, it use xdg-open as default, but you can also custom this behavior
     # and vscode has open like `External Uri Openers`
-    xdgOpenUsePortal = false;
+    # xdgOpenUsePortal = false;
     extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk # for gtk
-      # xdg-desktop-portal-kde  # for kde
+      # xdg-desktop-portal-gtk # for gtk
+      # xdg-desktop-portal-kde # for kde
     ];
   };
 }

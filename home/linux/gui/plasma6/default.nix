@@ -37,7 +37,7 @@ in {
   config = mkIf cfg.enable (
     mkMerge ([
         {
-          qt.kde.settings = cfg.settings;
+          # qt.kde.settings = cfg.settings;
         }
       ]
       ++ (import ./values args))

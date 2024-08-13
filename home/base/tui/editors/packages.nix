@@ -105,11 +105,11 @@
       delve # go debugger
 
       # -- java
-      jdk17
-      gradle
-      maven
-      spring-boot-cli
-      jdt-language-server
+      # jdk17
+      # gradle
+      # maven
+      # spring-boot-cli
+      # jdt-language-server
 
       #-- zig
       zls

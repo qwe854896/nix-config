@@ -16,8 +16,19 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
+  # clear /tmp on boot to get a stateless /tmp directory.
+  boot.tmp.cleanOnBoot = true;
 
+  # equal to `mount -t tmpfs tmpds /`
   fileSystems."/" = {
+    device = "tmpfs";
+    fsType = "tmpfs";
+    # set mode to 755, otherwise systemd will set it to 777, which causes problems
+    # relatime: update inode access times relative to modify or change time.
+    options = ["relatime" "mode=755"];
+  };
+
+  fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/b2a1d582-1d09-43d7-a6cc-a6257aa31e06";
     fsType = "ext4";
   };

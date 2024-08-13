@@ -115,6 +115,21 @@
         "type": "github"
       }
     },
+    "impermanence": {
+      "locked": {
+        "lastModified": 1719091691,
+        "narHash": "sha256-AxaLX5cBEcGtE02PeGsfscSb/fWMnyS7zMWBXQWDKbE=",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "23c1f06316b67cb5dabdfe2973da3785cfe9c34a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -326,6 +341,7 @@
       "inputs": {
         "haumea": "haumea",
         "home-manager": "home-manager",
+        "impermanence": "impermanence",
         "nix-darwin": "nix-darwin",
         "nix-gaming": "nix-gaming",
         "nixos-generators": "nixos-generators",

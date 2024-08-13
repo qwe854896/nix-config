@@ -49,6 +49,9 @@
     # install nix-gaming
     nix-gaming.url = "github:fufexan/nix-gaming";
 
+    # install impermanence
+    impermanence.url = "github:nix-community/impermanence";
+
     # TODO: Add more inputs here
   };
 }

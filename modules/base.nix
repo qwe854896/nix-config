@@ -97,6 +97,7 @@
     # 2. Or just use hardware security keys like Yubikey/CanoKey.
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKHjmk95MME81Aiz/FoCoD5JOXJtzZkz9A9qmsOmrtI/ qwe854896@Jun-Hongs-MacBook-Air.local"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPNUyWa9Bd7veLZ64aNAeoqFOzfwvnVatAVNP2YSNGS+ jhc@siber"
     ];
   };
 

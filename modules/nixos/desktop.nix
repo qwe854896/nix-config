@@ -31,7 +31,12 @@ in {
       #  NixOS's Configuration for Wayland based Window Manager
       ####################################################################
       services = {
-        xserver.enable = true;
+        xserver = {
+          enable = true;
+          # Configure keymap in X11
+          xkb.layout = "us";
+          xkb.variant = "";
+        };
         # Enable the KDE Plasma Desktop Environment.
         displayManager.sddm = {
           enable = true;

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  pkgs-unstable,
-  ...
-}: {
+{pkgs-unstable, ...}: {
   # terminal file manager
   programs.yazi = {
     enable = true;

@@ -13,15 +13,12 @@
   name = "siber";
 
   base-modules = {
-    nixos-modules =
-      (map mylib.relativeToRoot [
-        # common
-        "modules/nixos/desktop.nix"
-        # host specific
-        "hosts/${name}"
-      ])
-      ++ [
-      ];
+    nixos-modules = map mylib.relativeToRoot [
+      # common
+      "modules/nixos/desktop.nix"
+      # host specific
+      "hosts/${name}"
+    ];
     home-modules = map mylib.relativeToRoot [
       "home/linux/gui.nix"
       "hosts/${name}/home.nix"

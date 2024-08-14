@@ -13,16 +13,13 @@
   name = "lix";
 
   modules = {
-    nixos-modules =
-      (map mylib.relativeToRoot [
-        # common
-        "modules/nixos/server/server.nix"
-        "modules/nixos/server/lxc-container.nix"
-        # host specific
-        "hosts/lxc-${name}"
-      ])
-      ++ [
-      ];
+    nixos-modules = map mylib.relativeToRoot [
+      # common
+      "modules/nixos/server/server.nix"
+      "modules/nixos/server/lxc-container.nix"
+      # host specific
+      "hosts/lxc-${name}"
+    ];
     home-modules = map mylib.relativeToRoot [
       "home/linux/core.nix"
     ];

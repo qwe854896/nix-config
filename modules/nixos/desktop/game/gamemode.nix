@@ -1,6 +1,5 @@
 # https://github.com/fufexan/dotfiles/blob/483680e121b73db8ed24173ac9adbcc718cbbc6e/system/programs/gamemode.nix
 {
-  config,
   pkgs,
   nix-gaming,
   lib,

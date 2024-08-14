@@ -18,11 +18,7 @@ in
       ++ [
         nixos-generators.nixosModules.all-formats
         vscode-server.nixosModules.default
-        ({
-          config,
-          pkgs,
-          ...
-        }: {
+        (_: {
           services.vscode-server.enable = true;
         })
       ]

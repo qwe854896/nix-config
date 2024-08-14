@@ -13,14 +13,12 @@
   name = "ipro";
 
   modules = {
-    darwin-modules =
-      (map mylib.relativeToRoot [
-        # common
-        "modules/darwin"
-        # host specific
-        "hosts/darwin-${name}"
-      ])
-      ++ [];
+    darwin-modules = map mylib.relativeToRoot [
+      # common
+      "modules/darwin"
+      # host specific
+      "hosts/darwin-${name}"
+    ];
 
     home-modules = map mylib.relativeToRoot [
       # common

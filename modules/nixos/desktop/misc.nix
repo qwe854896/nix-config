@@ -1,8 +1,6 @@
 {
   config,
-  lib,
   pkgs,
-  pkgs-unstable,
   ...
 }: {
   # add user's shell into /etc/shells

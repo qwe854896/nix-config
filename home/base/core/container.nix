@@ -1,8 +1,4 @@
-{
-  pkgs,
-  pkgs-unstable,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     docker-compose
     dive # explore docker layers

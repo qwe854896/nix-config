@@ -1,9 +1,4 @@
-{
-  pkgs,
-  pkgs-unstable,
-  # pkgs-stable,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # creative
     blender # 3d modeling

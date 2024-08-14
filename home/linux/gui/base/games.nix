@@ -1,8 +1,4 @@
-{
-  pkgs,
-  nix-gaming,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     gamescope # SteamOS session compositing window manager
     prismlauncher # A free, open source launcher for Minecraft

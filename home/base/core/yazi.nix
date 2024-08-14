@@ -9,6 +9,7 @@
     package = pkgs-unstable.yazi;
     # Changing working directory when exiting Yazi
     enableBashIntegration = true;
+    enableFishIntegration = true;
     enableNushellIntegration = true;
     settings = {
       manager = {

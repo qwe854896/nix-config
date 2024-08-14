@@ -122,6 +122,8 @@
       nodePackages.bash-language-server
       shellcheck
       shfmt
+
+      pkgs.python311Packages.lizard
     ]
     #-*- Web Development -*-#
     ++ [

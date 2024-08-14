@@ -5,5 +5,6 @@
     wireshark # network analyzer
 
     # TODO: Add IDEs
+    vscode
   ];
 }

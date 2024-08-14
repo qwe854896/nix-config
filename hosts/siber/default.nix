@@ -37,6 +37,12 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  # Install brave.
+  programs.chromium = {
+    enable = true;
+    package = pkgs.brave;
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

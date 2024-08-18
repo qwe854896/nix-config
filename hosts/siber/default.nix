@@ -1,9 +1,5 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {pkgs, ...}: {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./impermanence.nix
   ];
@@ -12,7 +8,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "siber"; # Define your hostname.
+  networking.hostName = "siber";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -21,23 +17,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.jhc = {
-    packages = with pkgs; [
-      kdePackages.kate
-      #  thunderbird
-    ];
-  };
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # Install brave.
-  programs.chromium = {
-    enable = true;
-    package = pkgs.brave;
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

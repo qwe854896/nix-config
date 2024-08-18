@@ -2,9 +2,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 {
-  config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }: {
@@ -12,31 +10,39 @@
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["uhci_hcd" "ehci_pci" "ahci" "virtio_pci" "xhci_pci" "sr_mod" "virtio_blk"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = [];
-  # clear /tmp on boot to get a stateless /tmp directory.
-  boot.tmp.cleanOnBoot = true;
+  boot = {
+    initrd = {
+      availableKernelModules = ["uhci_hcd" "ehci_pci" "ahci" "virtio_pci" "xhci_pci" "sr_mod" "virtio_blk"];
+      kernelModules = [];
+    };
 
-  # equal to `mount -t tmpfs tmpds /`
-  fileSystems."/" = {
-    device = "tmpfs";
-    fsType = "tmpfs";
-    # set mode to 755, otherwise systemd will set it to 777, which causes problems
-    # relatime: update inode access times relative to modify or change time.
-    options = ["relatime" "mode=755"];
+    kernelModules = ["kvm-intel"];
+    extraModulePackages = [];
+
+    # clear /tmp on boot to get a stateless /tmp directory.
+    tmp.cleanOnBoot = true;
   };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/1fff006e-2419-4259-82c3-6d9a423e33b5";
-    fsType = "ext4";
-  };
+  fileSystems = {
+    # equal to `mount -t tmpfs tmpds /`
+    "/" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      # set mode to 755, otherwise systemd will set it to 777, which causes problems
+      # relatime: update inode access times relative to modify or change time.
+      options = ["relatime" "mode=755"];
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/350C-267B";
-    fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
+    "/nix" = {
+      device = "/dev/disk/by-uuid/1fff006e-2419-4259-82c3-6d9a423e33b5";
+      fsType = "ext4";
+    };
+
+    "/boot" = {
+      device = "/dev/disk/by-uuid/350C-267B";
+      fsType = "vfat";
+      options = ["fmask=0022" "dmask=0022"];
+    };
   };
 
   swapDevices = [

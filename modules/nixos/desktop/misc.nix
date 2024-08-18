@@ -3,27 +3,30 @@
   pkgs,
   ...
 }: {
-  # add user's shell into /etc/shells
-  environment.shells = with pkgs; [
-    bashInteractive
-    fish
-  ];
   # set user's default shell system-wide
   users.defaultUserShell = pkgs.bashInteractive;
 
   # fix for `sudo xxx` in kitty/wezterm and other modern terminal emulators
   security.sudo.keepTerminfo = true;
 
-  environment.variables = {
-    # fix https://github.com/NixOS/nixpkgs/issues/238025
-    TZ = "${config.time.timeZone}";
-  };
+  environment = {
+    # add user's shell into /etc/shells
+    shells = with pkgs; [
+      bashInteractive
+      fish
+    ];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    gnumake
-  ];
+    variables = {
+      # fix https://github.com/NixOS/nixpkgs/issues/238025
+      TZ = "${config.time.timeZone}";
+    };
+
+    # List packages installed in system profile. To search, run:
+    # $ nix search wget
+    systemPackages = with pkgs; [
+      gnumake
+    ];
+  };
 
   services = {
     gvfs.enable = true; # Mount, trash, and other functionalities

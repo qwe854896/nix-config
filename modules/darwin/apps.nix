@@ -1,8 +1,6 @@
 {
   config,
-  lib,
   pkgs,
-  pkgs-unstable,
   ...
 }:
 ##########################################################################
@@ -22,9 +20,8 @@
 # TODO Fell free to modify this file to fit your needs.
 #
 ##########################################################################
-let
-  # TODO: add homebrew Mirror and local proxy
-in {
+# TODO: add homebrew Mirror and local proxy
+{
   # Install packages from nix's official package repository.
   #
   # The packages installed here are available to all users, and are reproducible across machines, and are rollbackable.

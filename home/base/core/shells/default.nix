@@ -1,4 +1,4 @@
-{pkgs-unstable, ...}: let
+_: let
   shellAliases = {
     k = "kubectl";
 

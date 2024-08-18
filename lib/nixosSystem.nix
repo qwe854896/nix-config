@@ -9,7 +9,7 @@
   specialArgs ? (genSpecialArgs system),
   ...
 }: let
-  inherit (inputs) nixpkgs home-manager nixos-generators;
+  inherit (inputs) nixpkgs home-manager nixos-generators vscode-server;
 in
   nixpkgs.lib.nixosSystem {
     inherit system specialArgs;
@@ -17,6 +17,10 @@ in
       nixos-modules
       ++ [
         nixos-generators.nixosModules.all-formats
+        vscode-server.nixosModules.default
+        (_: {
+          services.vscode-server.enable = true;
+        })
       ]
       ++ (
         lib.optionals ((lib.lists.length home-modules) > 0)

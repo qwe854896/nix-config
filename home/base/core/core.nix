@@ -56,6 +56,7 @@
     # useful in bash/zsh prompt, not in nushell.
     eza = {
       enable = true;
+      enableFishIntegration = true;
       # do not enable aliases in nushell!
       enableNushellIntegration = false;
       git = true;
@@ -112,6 +113,7 @@
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
       enableNushellIntegration = true;
     };
 
@@ -123,6 +125,7 @@
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
       enableNushellIntegration = true;
       # https://github.com/atuinsh/atuin/issues/952
       settings.daemon.enabled = true;

@@ -16,7 +16,7 @@ in
     modules =
       darwin-modules
       ++ [
-        ({lib, ...}: {
+        (_: {
           nixpkgs.pkgs = import nixpkgs-darwin {inherit system;};
         })
       ]

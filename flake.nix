@@ -28,17 +28,27 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # add git hooks to format nix code before commit
+    # Add git hooks to format nix code before commit
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # generate iso/qcow2/docker/... image from nixos configuration
+    # Generate iso/qcow2/docker/... image from nixos configuration
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Pre-install vscode server on nixos
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
+    impermanence.url = "github:nix-community/impermanence";
 
     # TODO: Add more inputs here
   };

@@ -105,11 +105,11 @@
       delve # go debugger
 
       # -- java
-      jdk17
-      gradle
-      maven
-      spring-boot-cli
-      jdt-language-server
+      # jdk17
+      # gradle
+      # maven
+      # spring-boot-cli
+      # jdt-language-server
 
       #-- zig
       zls
@@ -122,6 +122,8 @@
       nodePackages.bash-language-server
       shellcheck
       shfmt
+
+      pkgs.python311Packages.lizard
     ]
     #-*- Web Development -*-#
     ++ [

@@ -130,4 +130,20 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
+  # Nix Settings
+  nix.settings = {
+    # enable flakes globally
+    experimental-features = ["nix-command" "flakes"];
+
+    # the following will be considered before the official ones
+    substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+
+    # let remote cache server fetches as many build deps to reduce build times
+    builders-use-substitutes = true;
+  };
 }

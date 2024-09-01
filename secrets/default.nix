@@ -30,7 +30,7 @@ in {
     };
 
     secrets = {
-      initialHashedPassword =
+      hashedPassword =
         {
           neededForUsers = true;
         }

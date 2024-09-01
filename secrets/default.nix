@@ -1,5 +1,20 @@
 {inputs, ...}: let
   mysecrets = builtins.toString inputs.mysecrets;
+
+  noaccess = {
+    mode = "0000";
+    owner = "root";
+  };
+
+  high_security = {
+    mode = "0500";
+    owner = "root";
+  };
+
+  user_readable = {
+    mode = "0500";
+    owner = "jhc";
+  };
 in {
   imports = [
     inputs.sops-nix.nixosModules.sops
@@ -15,13 +30,19 @@ in {
     };
 
     secrets = {
-      initialHashedPassword = {};
+      initialHashedPassword =
+        {
+          neededForUsers = true;
+        }
+        // high_security;
 
       # .age means the decrypted file is still encrypted by age(via a passphrase)
-      "jhcheng-gpg-subkeys.priv.age" = {
-        format = "binary";
-        sopsFile = "${mysecrets}/jhcheng-gpg-subkeys-2027-08-22.priv.age";
-      };
+      "jhcheng-gpg-subkeys.priv.age" =
+        {
+          format = "binary";
+          sopsFile = "${mysecrets}/jhcheng-gpg-subkeys-2027-08-22.priv.age";
+        }
+        // noaccess;
     };
   };
 }

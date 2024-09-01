@@ -75,6 +75,23 @@
         "type": "github"
       }
     },
+    "mysecrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1725180444,
+        "narHash": "sha256-GaqQ7l7lkvtkIuadUwQ1EUJwAaeGgwL0FK7zLo5W2VE=",
+        "ref": "refs/heads/main",
+        "rev": "d5d1b5f158aa22fcd19ec79852a284b20310ffea",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/qwe854896/nix-secrets.git"
+      },
+      "original": {
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/qwe854896/nix-secrets.git"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1724819573,
@@ -179,6 +196,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "mysecrets": "mysecrets",
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks": "pre-commit-hooks",
         "sops-nix": "sops-nix",

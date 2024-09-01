@@ -13,13 +13,16 @@ in {
       modules = [
         ./configuration.nix
         ./hardware-configuration.nix
+
         ../modules
+        ../secrets
 
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            extraSpecialArgs = {inherit inputs;};
             users.jhc = import ../home;
           };
         }
@@ -30,8 +33,6 @@ in {
             services.vscode-server.enable = true;
           }
         )
-
-        inputs.sops-nix.nixosModules.sops
       ];
       specialArgs = {inherit inputs;};
     };

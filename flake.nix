@@ -17,5 +17,8 @@
 
     # Add git hooks to format nix code before commit
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+
+    # Secrets Management
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 }

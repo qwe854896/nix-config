@@ -30,6 +30,8 @@ in {
             services.vscode-server.enable = true;
           }
         )
+
+        inputs.sops-nix.nixosModules.sops
       ];
       specialArgs = {inherit inputs;};
     };

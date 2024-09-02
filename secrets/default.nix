@@ -26,7 +26,7 @@ in {
 
     age = {
       # This will automatically import SSH keys as age keys
-      sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+      sshKeyPaths = ["/persist/system/etc/ssh/ssh_host_ed25519_key"];
     };
 
     secrets = {

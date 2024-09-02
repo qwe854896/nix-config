@@ -12,10 +12,10 @@ in {
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
-        ./hardware-configuration.nix
 
         ../modules
         ../secrets
+	../hardware
 
         inputs.home-manager.nixosModules.home-manager
         {
@@ -33,6 +33,8 @@ in {
             services.vscode-server.enable = true;
           }
         )
+
+	inputs.disko.nixosModules.default
       ];
       specialArgs = {inherit inputs;};
     };

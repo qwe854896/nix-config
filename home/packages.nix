@@ -58,9 +58,9 @@
     cowsay
     gnupg
     gnumake
+    conda
 
     # GUI tools
-    flameshot
     kate
     viu
   ];
@@ -123,5 +123,14 @@
     enable = true;
     enableBashIntegration = true;
     enableFishIntegration = true;
+  };
+
+  services.flameshot = {
+    enable = true;
+    settings = {
+      General = {
+        uiColor = "#3366ff";
+      };
+    };
   };
 }

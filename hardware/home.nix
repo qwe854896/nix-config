@@ -7,8 +7,38 @@
 
   home.persistence."/persist/home/jhc" = {
     directories = [
+      "Documents"
+      "Downloads"
+      "Music"
+      "Pictures"
+      "Videos"
+
+      # multiple utilities
       ".local/share"
       ".local/state"
+
+      # misc
+      ".config/fcitx5"
+      ".config/pulse"
+      ".pki"
+      ".steam"
+
+      # vscode
+      ".vscode"
+      ".vscode-insiders"
+      ".vscode-server"
+      ".config/Code/User"
+      ".config/Code - Insiders/User"
+
+      # browsers
+      ".mozilla"
+      ".config/BraveSoftware"
+
+      # sunshine
+      ".config/sunshine"
+
+      # password-store
+      ".password-store"
     ];
 
     files = [

@@ -22,6 +22,21 @@
     ];
   };
 
+  environment.persistence."/persist" = {
+    users.jhc = {
+      directories = [
+        {
+          directory = ".gnupg";
+          mode = "0700";
+        }
+        {
+          directory = ".ssh";
+          mode = "0700";
+        }
+      ];
+    };
+  };
+
   programs.fuse.userAllowOther = true;
   home-manager = {
     extraSpecialArgs = {inherit inputs;};

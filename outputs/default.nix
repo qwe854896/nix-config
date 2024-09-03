@@ -15,7 +15,7 @@ in {
 
         ../modules
         ../secrets
-	../hardware
+        ../hardware
 
         inputs.home-manager.nixosModules.home-manager
         {
@@ -34,7 +34,7 @@ in {
           }
         )
 
-	inputs.disko.nixosModules.default
+        inputs.disko.nixosModules.default
       ];
       specialArgs = {inherit inputs;};
     };

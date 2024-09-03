@@ -9,10 +9,11 @@
     directories = [
       "/etc/NetworkManager/system-connections"
       "/etc/ssh"
-      "/etc/nixos"
+      "/etc/nix/inputs"
 
       "/var/log"
       "/var/lib"
+      "/var/db/sudo/lectured"
 
       "/etc/secureboot"
     ];

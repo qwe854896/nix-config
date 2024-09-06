@@ -7,9 +7,8 @@
         type = "gpt";
         partitions = {
           esp = {
-            name = "ESP";
             start = "1M";
-            end = "128M";
+            end = "512M";
             type = "EF00";
             content = {
               type = "filesystem";
@@ -20,62 +19,58 @@
             };
           };
           luks = {
-            name = "crypted";
             size = "100%";
             content = {
               type = "luks";
-              name = "root";
+              name = "encrypted";
               settings.allowDiscards = true;
               passwordFile = "/tmp/secret.key";
+
+              # encrypt the root partition with luks2 and argon2id, will prompt for a passphrase, which will be used to unlock the partition.
+              # cryptsetup luksFormat
               extraFormatArgs = [
-                "--iter-time 1" # insecure but fast for tests
+                "--type luks2"
+                "--cipher aes-xts-plain64"
+                "--hash sha512"
+                "--iter-time 5000"
+                "--key-size 256"
+                "--pbkdf argon2id"
+                # use true random data from /dev/random, will block until enough entropy is available
+                "--use-random"
+              ];
+              extraOpenArgs = [
+                "--timeout 10"
               ];
               content = {
-                type = "lvm_pv";
-                vg = "vg";
-              };
-            };
-          };
-        };
-      };
-    };
-    lvm_vg = {
-      vg = {
-        type = "lvm_vg";
-        lvs = {
-          root = {
-            size = "100%FREE";
-            content = {
-              type = "btrfs";
-              extraArgs = ["-f"];
+                type = "btrfs";
+                extraArgs = ["-f"];
 
-              subvolumes = {
-                "/root" = {
-                  mountpoint = "/";
-                };
+                subvolumes = {
+                  "@root" = {
+                    mountpoint = "/";
+                  };
 
-                "/persist" = {
-                  mountOptions = ["subvol=@persist" "compress-force=zstd:1"];
-                  mountpoint = "/persist";
-                };
+                  "@persist" = {
+                    mountOptions = ["noatime" "compress-force=zstd:1"];
+                    mountpoint = "/persist";
+                  };
 
-                "/nix" = {
-                  mountOptions = ["subvol=@nix" "noatime" "compress-force=zstd:1"];
-                  mountpoint = "/nix";
-                };
+                  "@nix" = {
+                    mountOptions = ["noatime" "compress-force=zstd:1"];
+                    mountpoint = "/nix";
+                  };
 
-                "/tmp" = {
-                  mountOptions = ["subvol=@tmp" "compress-force=zstd:1"];
-                  mountpoint = "/tmp";
+                  "@tmp" = {
+                    mountOptions = ["noatime" "compress-force=zstd:1"];
+                    mountpoint = "/tmp";
+                  };
+
+                  "@swap" = {
+                    mountpoint = "/swap";
+                    swap.swapfile.size = "4096M";
+                  };
                 };
               };
-            };
-          };
-          swap = {
-            size = "4G";
-            content = {
-              type = "swap";
-              resumeDevice = true;
             };
           };
         };

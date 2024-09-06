@@ -8,7 +8,7 @@
   forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 in {
   nixosConfigurations = {
-    nixos = nixpkgs.lib.nixosSystem {
+    siber = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./configuration.nix

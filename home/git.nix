@@ -47,7 +47,7 @@
     };
 
     signing = {
-      key = "30A309C3A7CFC3AF";
+      key = "97983B8C7078C5B8";
       signByDefault = true;
     };
 

@@ -26,7 +26,7 @@ in {
 
     age = {
       # This will automatically import SSH keys as age keys
-      sshKeyPaths = ["/persist/system/etc/ssh/ssh_host_ed25519_key"];
+      sshKeyPaths = ["/persist/etc/ssh/ssh_host_ed25519_key"];
     };
 
     secrets = {
@@ -40,7 +40,7 @@ in {
       "jhcheng-gpg-subkeys.priv.age" =
         {
           format = "binary";
-          sopsFile = "${mysecrets}/jhcheng-gpg-subkeys-2027-08-22.priv.age";
+          sopsFile = "${mysecrets}/jhcheng-gpg-subkeys-2034-09-03.priv.age";
         }
         // noaccess;
     };

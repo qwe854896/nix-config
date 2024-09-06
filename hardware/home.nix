@@ -7,53 +7,6 @@
 
   home.persistence."/persist/home/jhc" = {
     directories = [
-      "Documents"
-      "Downloads"
-      "Music"
-      "Pictures"
-      "Videos"
-
-      # multiple utilities
-      ".local/share"
-      ".local/state"
-
-      # misc
-      ".config/fcitx5"
-      ".config/pulse"
-      ".pki"
-      ".steam"
-
-      # vscode
-      ".vscode"
-      ".vscode-insiders"
-      ".vscode-server"
-      ".config/Code/User"
-      ".config/Code - Insiders/User"
-
-      # browsers
-      ".mozilla"
-      ".config/BraveSoftware"
-
-      # sunshine
-      ".config/sunshine"
-
-      # password-store
-      ".password-store"
-    ];
-
-    files = [
-    ];
-
-    allowOther = true;
-  };
-
-  home.persistence."/persist/home/jhc/dotfiles/Plasma" = {
-    directories = [
-      ".config/gtk-3.0"
-      ".config/gtk-4.0"
-      ".config/kde.org"
-      ".config/kdedefaults"
-      ".config/xsettingsd"
     ];
 
     files = [

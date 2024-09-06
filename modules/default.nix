@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./core.nix
     ./fhs.nix
@@ -17,6 +21,7 @@
     ./sunshine.nix
     ./user-group.nix
     ./zram.nix
+    inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];
 
   xdg.portal = {
@@ -26,4 +31,6 @@
       xdg-desktop-portal-gtk
     ];
   };
+
+  services.pipewire.lowLatency.enable = true;
 }

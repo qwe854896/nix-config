@@ -17,5 +17,29 @@
 
     # Add git hooks to format nix code before commit
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    impermanence = {
+      url = "github:nix-community/impermanence";
+    };
+
+    # Secrets Management
+    sops-nix.url = "github:Mic92/sops-nix";
+
+    # my private secrets, it's a private repository, you need to replace it with your own.
+    # use ssh protocol to authenticate via ssh-agent/ssh-key, and shallow clone to save time
+    mysecrets = {
+      url = "git+ssh://git@github.com/qwe854896/nix-secrets.git?shallow=1";
+      flake = false;
+    };
   };
 }

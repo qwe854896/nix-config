@@ -1,10 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.gpg = {
     enable = true;
     homedir = "/home/jhc/.gnupg";
     publicKeys = [
       {
-        source = "/home/jhc/public.key";
+        source = "${inputs.mysecrets}/public/jhcheng-gpg-keys-2034-09-03.pub";
         trust = 5;
       } # ultimate trust, my own keys.
     ];
@@ -79,7 +83,8 @@
     ]);
     settings = {
       PASSWORD_STORE_DIR = "/home/jhc/.password-store";
-      PASSWORD_STORE_KEY = "6E23D76C";
+      PASSWORD_STORE_KEY = "64DAB0AA";
+      PASSWORD_SIGNING_KEY = "7078C5B8";
       PASSWORD_STORE_CLIP_TIME = "60";
     };
   };

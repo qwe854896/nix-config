@@ -7,7 +7,7 @@
 ############################################################################
 
 build:
-  nom build .#nixosConfigurations."nixos".config.system.build.toplevel --show-trace --verbose
+  nom build .#nixosConfigurations."siber".config.system.build.toplevel --show-trace --verbose
 
 deploy:
   nixos-rebuild switch --flake . --use-remote-sudo
@@ -23,3 +23,9 @@ gc:
   # garbage collect all unused nix store entries
   sudo nix store gc --debug
   sudo nix-collect-garbage --delete-old
+
+up:
+  nix flake update
+
+upp input:
+  nix flake update {{input}}

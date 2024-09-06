@@ -8,18 +8,21 @@
   forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 in {
   nixosConfigurations = {
-    nixos = nixpkgs.lib.nixosSystem {
+    siber = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
-        ./hardware-configuration.nix
+
         ../modules
+        ../secrets
+        ../hardware
 
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            extraSpecialArgs = {inherit inputs;};
             users.jhc = import ../home;
           };
         }
@@ -30,6 +33,8 @@ in {
             services.vscode-server.enable = true;
           }
         )
+
+        inputs.disko.nixosModules.default
       ];
       specialArgs = {inherit inputs;};
     };

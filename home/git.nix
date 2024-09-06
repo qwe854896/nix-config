@@ -46,10 +46,10 @@
       };
     };
 
-    # signing = {
-    #   key = "xxx";
-    #   signByDefault = true;
-    # };
+    signing = {
+      key = "97983B8C7078C5B8";
+      signByDefault = true;
+    };
 
     # A syntax-highlighting pager in Rust(2019 ~ Now)
     delta = {

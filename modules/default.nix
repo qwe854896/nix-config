@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ./core.nix
     ./fhs.nix
@@ -18,4 +18,12 @@
     ./user-group.nix
     ./zram.nix
   ];
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
+    ];
+  };
 }

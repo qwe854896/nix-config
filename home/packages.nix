@@ -63,6 +63,8 @@
     # GUI tools
     kate
     viu
+    joplin
+    joplin-desktop
   ];
 
   # A modern replacement for ‘ls’

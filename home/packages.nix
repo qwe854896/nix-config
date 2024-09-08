@@ -62,6 +62,7 @@
 
     # GUI tools
     kate
+    imv
     viu
     joplin
     joplin-desktop

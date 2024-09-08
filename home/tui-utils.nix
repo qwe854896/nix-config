@@ -29,4 +29,8 @@
     viAlias = true;
     vimAlias = true;
   };
+
+  home.sessionVariables = {
+    BROWSER = "brave";
+  };
 }

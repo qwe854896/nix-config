@@ -23,6 +23,7 @@
         ];
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKHjmk95MME81Aiz/FoCoD5JOXJtzZkz9A9qmsOmrtI/ qwe854896@Jun-Hongs-MacBook-Air.local"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP2xOjSBwDVRGgI1yZy9P6G2jhV4mP9UV13HDNP5qQVr jhc@tuxedo"
         ];
       };
 

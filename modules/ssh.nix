@@ -1,8 +1,5 @@
 {lib, ...}: {
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = lib.mkDefault false;
+  networking.firewall.allowedTCPPorts = [22];
 
   # Enable the OpenSSH daemon.
   services.openssh = {

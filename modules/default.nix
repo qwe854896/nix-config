@@ -20,6 +20,7 @@
     ./steam.nix
     ./sunshine.nix
     ./user-group.nix
+    ./wireguard.nix
     ./zram.nix
     inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];

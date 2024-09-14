@@ -9,5 +9,6 @@
     ./hardware-configuration.nix
     ./impermanence.nix
     ./secureboot.nix
+    ./configuration.nix
   ];
 }

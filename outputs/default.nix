@@ -11,11 +11,38 @@ in {
     siber = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration.nix
-
         ../modules
         ../secrets
-        ../hardware
+        ../hosts/siber
+
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {inherit inputs;};
+            users.jhc = import ../home;
+          };
+        }
+
+        inputs.vscode-server.nixosModules.default
+        (
+          _: {
+            services.vscode-server.enable = true;
+          }
+        )
+
+        inputs.disko.nixosModules.default
+      ];
+      specialArgs = {inherit inputs;};
+    };
+
+    tuxedo = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ../modules
+        ../secrets
+        ../hosts/tuxedo
 
         inputs.home-manager.nixosModules.home-manager
         {

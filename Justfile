@@ -7,7 +7,7 @@
 ############################################################################
 
 build:
-  nom build .#nixosConfigurations."siber".config.system.build.toplevel --show-trace --verbose
+  nom build .#nixosConfigurations.{{quote(`cat /etc/hostname`)}}.config.system.build.toplevel --show-trace --verbose
 
 deploy:
   nixos-rebuild switch --flake . --use-remote-sudo

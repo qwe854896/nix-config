@@ -66,6 +66,9 @@
     viu
     joplin
     joplin-desktop
+
+    # Media
+    pavucontrol
   ];
 
   # A modern replacement for ‘ls’

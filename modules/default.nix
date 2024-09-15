@@ -7,6 +7,8 @@
     ./core.nix
     ./fhs.nix
     ./fonts.nix
+    ./gui.nix
+    ./hyprland.nix
     ./i18n.nix
     ./misc.nix
     ./networking.nix
@@ -14,7 +16,6 @@
     ./nvidia.nix
     ./packages.nix
     ./peripherals.nix
-    ./plasma5.nix
     ./security.nix
     ./ssh.nix
     ./steam.nix
@@ -28,7 +29,6 @@
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
-      xdg-desktop-portal-kde
       xdg-desktop-portal-gtk
     ];
   };

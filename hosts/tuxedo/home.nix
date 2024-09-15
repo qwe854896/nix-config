@@ -10,7 +10,6 @@
     ];
 
     files = [
-      ".gtkrc-2.0"
       ".config/akregatorrc"
       ".config/baloofilerc"
       ".config/dolphinrc"

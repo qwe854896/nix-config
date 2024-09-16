@@ -39,6 +39,14 @@
 
   # hyprland configs
   xdg.configFile = {
+    "hypr/hypridle.conf" = {
+      source = ./conf/hypridle.conf;
+    };
+
+    "hypr/hyprlock.conf" = {
+      source = ./conf/hyprlock.conf;
+    };
+
     "hypr/scripts" = {
       source = ./conf/scripts;
       recursive = true;

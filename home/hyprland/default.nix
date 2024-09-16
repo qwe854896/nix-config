@@ -37,16 +37,31 @@
     systemd.variables = ["--all"];
   };
 
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+        ignore_dbus_inhibit = false;
+        lock_cmd = "hyprlock";
+      };
+
+      listener = [
+        {
+          timeout = 60;
+          on-timeout = "hyprlock";
+        }
+      ];
+    };
+  };
+
+  programs.hyprlock = {
+    enable = true;
+    extraConfig = builtins.readFile ./conf/hyprlock.conf;
+  };
+
   # hyprland configs
   xdg.configFile = {
-    "hypr/hypridle.conf" = {
-      source = ./conf/hypridle.conf;
-    };
-
-    "hypr/hyprlock.conf" = {
-      source = ./conf/hyprlock.conf;
-    };
-
     "hypr/scripts" = {
       source = ./conf/scripts;
       recursive = true;

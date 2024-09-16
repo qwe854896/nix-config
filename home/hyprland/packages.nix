@@ -3,8 +3,6 @@
   home.packages = with pkgs; [
     # Hyprland Ecosystem
     hyprpicker
-    hypridle
-    hyprlock
 
     # Wayland
     waybar # the status bar

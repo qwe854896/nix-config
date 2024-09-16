@@ -2,7 +2,6 @@
   # Packages
   home.packages = with pkgs; [
     waybar # the status bar
-    kdePackages.dolphin # file manager
     wofi # menu for wayland compositors
 
     brightnessctl

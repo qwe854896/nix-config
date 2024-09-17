@@ -71,6 +71,7 @@
 
     # GUI tools
     moonlight-qt
+    wl-clipboard
 
     # Nvidia related
     libva-utils

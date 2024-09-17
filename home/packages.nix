@@ -66,6 +66,7 @@
     viu
     joplin
     joplin-desktop
+    flameshot
 
     # Media
     pavucontrol

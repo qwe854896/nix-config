@@ -7,7 +7,6 @@
   pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
   # Enable hardware accelerated graphics drivers
-
   hardware.graphics = {
     enable = true;
     package = pkgs-unstable.mesa.drivers;
@@ -18,6 +17,7 @@ in {
   };
 
   # Load nvidia driver for Xorg and Wayland
+  # Will install nvidia-vaapi-driver by default
   services.xserver.videoDrivers = ["nvidia"];
 
   # Prevent broken graphics after sleep

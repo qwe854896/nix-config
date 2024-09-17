@@ -25,6 +25,9 @@
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "NVD_BACKEND,direct"
       ];
+      cursor = {
+        no_hardware_cursors = true;
+      };
     };
 
     # hyprland extra configs

@@ -46,13 +46,13 @@
       general = {
         after_sleep_cmd = "hyprctl dispatch dpms on";
         ignore_dbus_inhibit = false;
-        lock_cmd = "hyprlock";
+        lock_cmd = "pidof hyprlock || hyprlock";
       };
 
       listener = [
         {
           timeout = 60;
-          on-timeout = "hyprlock";
+          on-timeout = "pidof hyprlock || hyprlock";
         }
       ];
     };
@@ -63,6 +63,14 @@
   programs.hyprlock = {
     enable = true;
     extraConfig = builtins.readFile ./conf/hyprlock.conf;
+
+    # https://github.com/hyprwm/hyprlock/issues/128
+    package = pkgs.hyprlock.overrideAttrs (old: {
+      patchPhase = ''
+        substituteInPlace src/core/hyprlock.cpp \
+        --replace "5000" "16"
+      '';
+    });
   };
 
   # hyprland configs

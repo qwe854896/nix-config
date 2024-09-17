@@ -55,6 +55,8 @@
     };
   };
 
+  services.swayosd.enable = true;
+
   programs.hyprlock = {
     enable = true;
     extraConfig = builtins.readFile ./conf/hyprlock.conf;

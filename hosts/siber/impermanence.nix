@@ -27,67 +27,50 @@
 
   environment.persistence."/persist" = {
     users.jhc = {
-      directories =
-        [
-          "Documents"
-          "Downloads"
-          "Music"
-          "Pictures"
-          "Videos"
+      directories = [
+        "Documents"
+        "Downloads"
+        "Music"
+        "Pictures"
+        "Videos"
 
-          {
-            directory = ".gnupg";
-            mode = "0700";
-          }
-          {
-            directory = ".ssh";
-            mode = "0700";
-          }
+        {
+          directory = ".gnupg";
+          mode = "0700";
+        }
+        {
+          directory = ".ssh";
+          mode = "0700";
+        }
 
-          # multiple utilities
-          ".local/share"
-          ".local/state"
+        # multiple utilities
+        ".local/share"
+        ".local/state"
 
-          # misc
-          ".config/fcitx5"
-          ".config/pulse"
-          ".pki"
-          ".steam"
+        # misc
+        ".config/fcitx5"
+        ".config/pulse"
+        ".pki"
+        ".steam"
 
-          # vscode
-          ".vscode"
-          ".vscode-insiders"
-          ".vscode-server"
-          ".config/Code/User"
-          ".config/Code - Insiders/User"
+        # vscode
+        ".vscode"
+        ".vscode-insiders"
+        ".vscode-server"
+        ".config/Code/User"
+        ".config/Code - Insiders/User"
 
-          # browsers
-          ".mozilla"
-          ".config/BraveSoftware"
+        # browsers
+        ".mozilla"
+        ".config/BraveSoftware"
 
-          # sunshine
-          ".config/sunshine"
+        # sunshine
+        ".config/sunshine"
 
-          # password-store
-          ".password-store"
-        ]
-        ++ [
-          ".config/gtk-3.0"
-          ".config/gtk-4.0"
-          ".config/kde.org"
-          ".config/kdedefaults"
-          ".config/xsettingsd"
-        ];
+        # password-store
+        ".password-store"
+      ];
     };
-  };
-
-  programs.fuse.userAllowOther = true;
-  home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      jhc = import ./home.nix;
-    };
-    backupFileExtension = "backup";
   };
 
   # https://discourse.nixos.org/t/impermanence-vs-systemd-initrd-w-tpm-unlocking

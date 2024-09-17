@@ -15,6 +15,7 @@ _: {
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.firewall.enable = false;
 
   # Enable the QEMU guest agent.
   services.qemuGuest.enable = true;
@@ -26,4 +27,10 @@ _: {
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+
+  home-manager = {
+    users = {
+      jhc = import ./home.nix;
+    };
+  };
 }

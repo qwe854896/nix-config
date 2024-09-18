@@ -79,5 +79,10 @@
       source = ./conf/scripts;
       recursive = true;
     };
+
+    "hypr/waybar" = {
+      source = ./conf/waybar;
+      recursive = true;
+    };
   };
 }

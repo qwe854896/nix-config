@@ -1,14 +1,20 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./fcitx5
     ./git.nix
     ./gui-apps.nix
+    ./hyprland
     ./kitty.nix
     ./packages.nix
     ./password-store.nix
     ./starship.nix
     ./tui-utils.nix
     ./xdg.nix
+    inputs.hyprland.homeManagerModules.default
   ];
 
   # Home Manager needs a bit of information about you and the

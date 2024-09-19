@@ -1,14 +1,49 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   # Browsers
   programs.firefox.enable = true;
   programs.chromium = {
     enable = true;
     package = pkgs.brave;
+    commandLineArgs = [
+      # make it use GTK_IM_MODULE if it runs with Gtk4, so fcitx5 can work with it.
+      # (only supported by chromium/chrome at this time, not electron)
+      "--gtk-version=4"
+      # make it use text-input-v1, which works for kwin 5.27 and weston
+      "--enable-wayland-ime"
+
+      # enable hardware acceleration - vulkan api
+      # "--enable-features=Vulkan"
+    ];
   };
 
   # IDE
   programs.vscode = {
     enable = true;
+    package =
+      (pkgs.vscode.override {
+        isInsiders = true;
+
+        # https://wiki.archlinux.org/title/Wayland#Electron
+        commandLineArgs = [
+          # make it use GTK_IM_MODULE if it runs with Gtk4, so fcitx5 can work with it.
+          # (only supported by chromium/chrome at this time, not electron)
+          "--gtk-version=4"
+          # make it use text-input-v1, which works for kwin 5.27 and weston
+          "--enable-wayland-ime"
+        ];
+      })
+      .overrideAttrs (oldAttrs: rec {
+        version = "latest";
+        # Use VSCode Insiders to fix crash: https://github.com/NixOS/nixpkgs/issues/246509
+        src = builtins.fetchTarball {
+          url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
+          sha256 = "08c7h1w8cpnl84i9b7z7zh1s19dz4bqw79ahk391la745d55z4d7";
+        };
+      });
   };
 
   # Media Player

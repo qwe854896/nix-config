@@ -66,6 +66,10 @@
     viu
     joplin
     joplin-desktop
+    flameshot
+
+    # Media
+    pavucontrol
   ];
 
   # A modern replacement for ‘ls’

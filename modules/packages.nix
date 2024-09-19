@@ -43,7 +43,6 @@
     fastfetch
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     just
-    fish
 
     # system call monitoring
     strace # system call monitoring
@@ -72,7 +71,25 @@
 
     # GUI tools
     moonlight-qt
+    wl-clipboard
+
+    # Nvidia related
+    libva-utils
+    vdpauinfo
+    vulkan-tools
+    vulkan-validation-layers
+    libvdpau-va-gl
+    egl-wayland
+    wgpu-utils
+    mesa
+    libglvnd
+    nvtop
+    nvitop
+    libGL
   ];
+
+  # https://discourse.nixos.org/t/fish-shell-plugins-missing-from-profile-on-one-machine-but-not-on-another/21636
+  programs.fish.enable = true;
 
   # replace default editor with neovim
   environment.variables.EDITOR = "nvim";

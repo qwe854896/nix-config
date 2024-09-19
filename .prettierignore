@@ -5,3 +5,8 @@ flake.lock
 vercel.json
 cache
 temp
+
+// Temporarily disable formatting waybar jsonc
+*.jsonc
+*.css
+

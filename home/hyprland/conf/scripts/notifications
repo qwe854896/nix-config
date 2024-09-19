@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+if [[ ! $(pidof mako) ]]; then
+	mako
+fi

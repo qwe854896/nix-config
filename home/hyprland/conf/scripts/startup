@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+## Autostart Programs
+
+# Kill already running process
+_ps=(waybar mako)
+for _prs in "${_ps[@]}"; do
+	if [[ $(pidof ${_prs}) ]]; then
+		pkill -9 ${_prs}
+	fi
+done
+
+# Launch notification daemon (mako)
+bash ~/.config/hypr/scripts/notifications &
+
+# Launch statusbur (waybar)
+bash ~/.config/hypr/scripts/statusbar &

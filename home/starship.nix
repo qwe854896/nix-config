@@ -19,6 +19,7 @@ _: {
         format = "on [$symbol$active(\($region\))]($style) ";
         symbol = "🅶 ️";
       };
+      command_timeout = 750;
     };
   };
 }

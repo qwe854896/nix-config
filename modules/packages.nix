@@ -84,7 +84,7 @@
     mesa
     libglvnd
     libGL
-    nvtop
+    nvtopPackages.full
     nvitop
     libGL
   ];

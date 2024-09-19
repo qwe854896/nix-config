@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  shellAliases = {
+    "zj" = "zellij";
+  };
+in {
   # Shell
   programs.bash.enable = true;
   programs.fish.enable = true;
@@ -19,6 +23,8 @@
     viAlias = true;
     vimAlias = true;
   };
+
+  home.shellAliases = shellAliases;
 
   home.sessionVariables = {
     BROWSER = "brave";

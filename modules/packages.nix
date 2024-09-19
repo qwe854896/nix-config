@@ -83,6 +83,7 @@
     wgpu-utils
     mesa
     libglvnd
+    libGL
     nvtop
     nvitop
     libGL

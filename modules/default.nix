@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./core.nix
+    ./docker.nix
     ./fhs.nix
     ./fonts.nix
     ./gui.nix

@@ -64,6 +64,13 @@
         ".mozilla"
         ".config/BraveSoftware"
 
+        # language package manager
+        ".npm"
+        ".conda"
+        ".cargo"
+
+        ".config/github-copilot"
+
         # sunshine
         ".config/sunshine"
 

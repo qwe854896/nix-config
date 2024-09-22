@@ -34,6 +34,10 @@ in {
         "--enable-wayland-ime"
       ];
     };
+    extensions = with pkgs.vscode-extensions; [
+      llvm-vs-code-extensions.vscode-clangd
+      mkhl.direnv
+    ];
   };
 
   # Media Player

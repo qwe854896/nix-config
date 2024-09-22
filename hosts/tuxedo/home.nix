@@ -8,6 +8,11 @@
         Hostname github.com
         IdentityFile ~/.ssh/tuxedo
         IdentitiesOnly yes
+
+      Host siber
+        Hostname siber.feline
+        IdentityFile ~/.ssh/tuxedo
+        IdentitiesOnly yes
     '';
   };
 }

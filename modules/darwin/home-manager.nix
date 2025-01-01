@@ -80,18 +80,4 @@ in {
       manual.manpages.enable = false;
     };
   };
-
-  # TODO: separate to suitable config
-  # https://github.com/LnL7/nix-darwin/wiki/Terminfo-issues
-  environment = {
-    etc = {
-      terminfo = {
-        source = "${pkgs.ncurses}/share/terminfo";
-      };
-    };
-
-    systemPackages = [
-      pkgs.ncurses
-    ];
-  };
 }

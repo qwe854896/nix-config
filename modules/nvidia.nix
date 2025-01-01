@@ -1,10 +1,9 @@
 {
-  config,
-  inputs,
   pkgs,
+  hyprland,
   ...
 }: let
-  pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  pkgs-unstable = hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
   # Enable hardware accelerated graphics drivers
   hardware.graphics = {

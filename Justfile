@@ -6,14 +6,18 @@
 #
 ############################################################################
 
+os := `uname -s | grep -qi darwin && echo darwin || echo nixos`
+hostname := `hostname`
+sudo_flag := `[[ {{os}} == "nixos" ]] && echo --use-remote-sudo || echo`
+
 build:
-  nom build .#nixosConfigurations.{{quote(`cat /etc/hostname`)}}.config.system.build.toplevel --show-trace --verbose
+  nom build .#{{os}}Configurations.{{quote(hostname)}}.config.system.build.toplevel --show-trace --verbose
 
 deploy:
-  nixos-rebuild switch --flake . --use-remote-sudo
+  ./result/sw/bin/{{os}}-rebuild switch --flake . {{sudo_flag}}
 
 debug:
-  nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose
+  ./result/sw/bin/{{os}}-rebuild switch --flake . {{sudo_flag}} --show-trace --verbose
 
 clean:
   # remove all generations older than 7 days

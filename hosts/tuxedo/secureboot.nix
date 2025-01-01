@@ -1,11 +1,11 @@
 {
   pkgs,
   lib,
-  inputs,
+  lanzaboote,
   ...
 }: {
   imports = [
-    inputs.lanzaboote.nixosModules.lanzaboote
+    lanzaboote.nixosModules.lanzaboote
   ];
 
   environment.systemPackages = [

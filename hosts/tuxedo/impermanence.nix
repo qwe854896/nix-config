@@ -1,6 +1,6 @@
-{inputs, ...}: {
+{impermanence, ...}: {
   imports = [
-    inputs.impermanence.nixosModules.impermanence
+    impermanence.nixosModules.impermanence
   ];
 
   # clear /tmp on boot to get a stateless /tmp directory.

@@ -1,6 +1,6 @@
 {
-  inputs,
   pkgs,
+  nix-gaming,
   ...
 }: {
   imports = [
@@ -24,7 +24,7 @@
     ./user-group.nix
     ./wireguard.nix
     ./zram.nix
-    inputs.nix-gaming.nixosModules.pipewireLowLatency
+    nix-gaming.nixosModules.pipewireLowLatency
   ];
 
   xdg.portal = {

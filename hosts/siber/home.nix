@@ -1,4 +1,4 @@
-{inputs, ...}: {
+_: {
   home.stateVersion = "24.05";
 
   programs.ssh = {

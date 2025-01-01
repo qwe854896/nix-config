@@ -1,7 +1,7 @@
 {
   lib,
-  inputs,
   pkgs,
+  nixpkgs,
   ...
 }: {
   # Allow unfree packages
@@ -17,7 +17,10 @@
   # Nix Settings
   nix.settings = {
     # enable flakes globally
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
     # given the users in this list the right to specify additional substituters via:
     #    1. `nixConfig.substituers` in `flake.nix`
@@ -57,10 +60,10 @@
   nix.channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
 
   # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
-  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.registry.nixpkgs.flake = nixpkgs;
 
   # make `nix repl '<nixpkgs>'` use the same nixpkgs as the one used by this flake.
-  environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
+  environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
 
   # discard all the default paths, and only use the one from this flake.
   nix.nixPath = lib.mkForce ["/etc/nix/inputs"];

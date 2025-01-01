@@ -1,6 +1,6 @@
 {
   pkgs,
-  inputs,
+  mysecrets,
   ...
 }: {
   programs.gpg = {
@@ -8,7 +8,7 @@
     homedir = "/home/jhc/.gnupg";
     publicKeys = [
       {
-        source = "${inputs.mysecrets}/public/jhcheng-gpg-keys-2034-09-03.pub";
+        source = "${mysecrets}/public/jhcheng-gpg-keys-2034-09-03.pub";
         trust = 5;
       } # ultimate trust, my own keys.
     ];

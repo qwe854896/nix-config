@@ -13,7 +13,6 @@
     ./i18n.nix
     ./misc.nix
     ./networking.nix
-    ./nix.nix
     ./nvidia.nix
     ./packages.nix
     ./peripherals.nix

@@ -25,7 +25,7 @@ in {
     siber = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ../modules
+        ../modules/nixos
         ../secrets
         ../hosts/siber
 
@@ -53,7 +53,7 @@ in {
     tuxedo = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ../modules
+        ../modules/nixos
         ../secrets
         ../hosts/tuxedo
 

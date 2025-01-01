@@ -6,6 +6,13 @@
 }: {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    (self: super: {
+      bpftrace = super.bpftrace.override {
+        llvmPackages = super.llvmPackages_18;
+      };
+    })
+  ];
 
   # Nix Settings
   nix.settings = {

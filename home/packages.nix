@@ -77,7 +77,7 @@
     enable = true;
     enableFishIntegration = true;
     git = true;
-    icons = true;
+    icons = "auto";
   };
 
   # a cat(1) clone with syntax highlighting and Git integration.

@@ -8,7 +8,7 @@
 
 os := `uname -s | grep -qi darwin && echo darwin || echo nixos`
 hostname := `hostname`
-sudo_flag := `[[ {{os}} == "nixos" ]] && echo --use-remote-sudo || echo`
+sudo_flag := if os == "nixos" { "--use-remote-sudo" } else { "" }
 
 build:
   nom build .#{{os}}Configurations.{{quote(hostname)}}.config.system.build.toplevel --show-trace --verbose

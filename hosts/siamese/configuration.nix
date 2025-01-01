@@ -19,11 +19,6 @@
     # https://discourse.nixos.org/t/fish-shell-plugins-missing-from-profile-on-one-machine-but-not-on-another/21636
     zsh.enable = true;
     fish.enable = true;
-
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = false;
-    };
   };
 
   # Turn off NIX_PATH warnings now that we're using flakes

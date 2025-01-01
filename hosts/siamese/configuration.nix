@@ -3,10 +3,9 @@
   config,
   pkgs,
   sops-nix,
+  lib,
   ...
-}: let
-  user = "jhcheng";
-in {
+}: {
   imports = [
     ../../modules/darwin/home-manager.nix
     ../../modules/shared
@@ -14,40 +13,7 @@ in {
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
-
-  # Setup user, packages, programs
-  nix = {
-    package = pkgs.nix;
-    settings = {
-      experimental-features = "nix-command flakes";
-      trusted-users = [
-        "@admin"
-        "${user}"
-      ];
-      substituters = [
-        "https://nix-community.cachix.org"
-        "https://cache.nixos.org"
-      ];
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      ];
-      builders-use-substitutes = true;
-      # https://github.com/NixOS/nix/issues/7273
-      auto-optimise-store = false;
-    };
-
-    gc = {
-      user = "root";
-      automatic = true;
-      interval = {
-        Weekday = 0;
-        Hour = 2;
-        Minute = 0;
-      };
-      options = "--delete-older-than 30d";
-    };
-  };
+  nixpkgs.hostPlatform = lib.mkDefault "aarch64-darwin";
 
   programs = {
     # https://discourse.nixos.org/t/fish-shell-plugins-missing-from-profile-on-one-machine-but-not-on-another/21636

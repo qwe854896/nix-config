@@ -26,6 +26,7 @@ in {
       system = "x86_64-linux";
       modules = [
         ../modules/nixos
+        ../modules/shared
         ../secrets
         ../hosts/siber
 
@@ -54,6 +55,7 @@ in {
       system = "x86_64-linux";
       modules = [
         ../modules/nixos
+        ../modules/shared
         ../secrets
         ../hosts/tuxedo
 
@@ -83,6 +85,7 @@ in {
     siamese = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
+        ../modules/shared
         ../secrets
         ../hosts/siamese
         home-manager.darwinModules.home-manager

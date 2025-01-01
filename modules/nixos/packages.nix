@@ -89,9 +89,6 @@
     libGL
   ];
 
-  # https://discourse.nixos.org/t/fish-shell-plugins-missing-from-profile-on-one-machine-but-not-on-another/21636
-  programs.fish.enable = true;
-
   # replace default editor with neovim
   environment.variables.EDITOR = "nvim";
 }

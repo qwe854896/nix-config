@@ -15,12 +15,6 @@
   services.nix-daemon.enable = true;
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-darwin";
 
-  programs = {
-    # https://discourse.nixos.org/t/fish-shell-plugins-missing-from-profile-on-one-machine-but-not-on-another/21636
-    zsh.enable = true;
-    fish.enable = true;
-  };
-
   # Turn off NIX_PATH warnings now that we're using flakes
   system.checks.verifyNixPath = false;
 

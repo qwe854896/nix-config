@@ -85,6 +85,7 @@ in {
     siamese = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
+        ../modules/darwin
         ../modules/shared
         ../secrets
         ../hosts/siamese

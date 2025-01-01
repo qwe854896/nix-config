@@ -22,12 +22,6 @@ in
   #   owner = "jhc";
   # };
   {
-    imports = [
-      # (lib.mkIf pkgs.stdenv.hostPlatform.isLinux sops-nix.nixosModules.sops)
-      # (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin sops-nix.darwinModules.sops)
-      sops-nix.darwinModules.default
-    ];
-
     sops = {
       # This will add secrets.yml to the nix store
       defaultSopsFile = "${mysecrets_path}/secrets.yaml";

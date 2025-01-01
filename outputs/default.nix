@@ -12,6 +12,7 @@
   homebrew-cask,
   homebrew-bundle,
   homebrew-jorgelog,
+  sops-nix,
   ...
 } @ inputs: let
   supportedSystems = [
@@ -44,6 +45,7 @@ in {
         })
 
         disko.nixosModules.default
+        sops-nix.nixosModules.default
       ];
       specialArgs = inputs;
     };
@@ -71,6 +73,7 @@ in {
         })
 
         disko.nixosModules.default
+        sops-nix.nixosModules.default
       ];
       specialArgs = inputs;
     };
@@ -84,6 +87,7 @@ in {
         ../hosts/siamese
         home-manager.darwinModules.home-manager
         nix-homebrew.darwinModules.nix-homebrew
+        sops-nix.darwinModules.default
         {
           nix-homebrew = {
             user = "jhcheng";

@@ -14,7 +14,6 @@
 in {
   imports = [
     ../../modules/darwin/dock
-    ../../modules/darwin/home-manager.nix
   ];
 
   # Auto upgrade nix package and the daemon service.

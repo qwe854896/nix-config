@@ -26,6 +26,7 @@ in {
       system = "x86_64-linux";
       modules = [
         ../modules/nixos
+        ../modules/nixos/home-manager.nix
         ../modules/shared
         ../secrets
         ../hosts/siber
@@ -33,10 +34,7 @@ in {
         home-manager.nixosModules.home-manager
         {
           home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
             extraSpecialArgs = inputs;
-            users.jhc = import ../home;
           };
         }
 
@@ -55,6 +53,7 @@ in {
       system = "x86_64-linux";
       modules = [
         ../modules/nixos
+        ../modules/nixos/home-manager.nix
         ../modules/shared
         ../secrets
         ../hosts/tuxedo
@@ -62,10 +61,7 @@ in {
         home-manager.nixosModules.home-manager
         {
           home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
             extraSpecialArgs = inputs;
-            users.jhc = import ../home;
           };
         }
 
@@ -86,6 +82,7 @@ in {
       system = "aarch64-darwin";
       modules = [
         ../modules/darwin
+        ../modules/darwin/home-manager.nix
         ../modules/shared
         ../secrets
         ../hosts/siamese

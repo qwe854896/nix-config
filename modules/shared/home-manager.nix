@@ -8,6 +8,9 @@
   user = "jhcheng";
   email = "qwe854896@gmail.com";
 in {
+  # Let Home Manager install and manage itself.
+  home-manager.enable = true;
+
   # Shared shell configuration
   zsh = {
     enable = true;
@@ -57,7 +60,8 @@ in {
       }
 
       # pnpm is a javascript package manager
-      alias pn=pnpm
+      # typos-ignore-next-line
+      # alias on=pnpm
       alias px=pnpx
 
       # Use difftastic, syntax-aware diffing

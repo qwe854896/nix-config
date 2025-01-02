@@ -4,21 +4,25 @@
   mysecrets,
   ...
 }: let
-  user = "jhcheng";
+  user = "jhc";
   sharedFiles = import ../shared/files.nix {inherit config pkgs;};
   additionalFiles = import ./files.nix {inherit user config pkgs;};
 in {
+  imports = [
+    ./home
+  ];
+
   # It me
   users.users.${user} = {
     name = "${user}";
-    home = "/Users/${user}";
-    isHidden = false;
+    home = "/home/${user}";
     shell = pkgs.zsh;
   };
 
   # Enable home-manager
   home-manager = {
     useGlobalPkgs = true;
+    useUserPackages = true;
     users.${user} = {
       pkgs,
       config,
@@ -36,9 +40,9 @@ in {
         # Home Manager needs a bit of information about you and the
         # paths it should manage.
         username = "${user}";
-        homeDirectory = "/Users/${user}";
+        homeDirectory = "/home/${user}";
 
-        stateVersion = "23.11";
+        stateVersion = "24.05";
       };
       programs =
         {}

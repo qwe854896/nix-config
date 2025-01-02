@@ -33,3 +33,7 @@ up:
 
 upp input:
   nix flake update {{input}}
+
+search keyword:
+  rg -B 3 -A 2 "{{keyword}}" --glob '**/*.nix' --glob '!result/**' .
+

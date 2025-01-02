@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+_: {
   networking.firewall = {
     # wireguard trips rpfilter up
     extraCommands = ''

@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{pkgs, ...}:
 # ===============================================================================
 #
 # Sunshine: A self-hosted game stream server for Moonlight(Client).
@@ -21,9 +17,7 @@
 #   https://github.com/RandomNinjaAtk/nixos/blob/fc7d6e8734e6de175e0a18a43460c48003108540/services.sunshine.nix
 #
 # ===============================================================================
-let
-  sunshine-cuda = pkgs.sunshine.override {cudaSupport = true;};
-in {
+{
   services.sunshine = {
     enable = true;
     package = pkgs.sunshine.override {cudaSupport = true;};

@@ -3,9 +3,6 @@
   pkgs,
   ...
 }: {
-  # set user's default shell system-wide
-  users.defaultUserShell = pkgs.bashInteractive;
-
   # fix for `sudo xxx` in kitty/wezterm and other modern terminal emulators
   security.sudo.keepTerminfo = true;
 

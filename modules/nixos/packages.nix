@@ -38,6 +38,7 @@ in
     nvtopPackages.full
     nvitop
     libGL
+    conda
   ]
 # environment.variables.EDITOR = "nvim";
 

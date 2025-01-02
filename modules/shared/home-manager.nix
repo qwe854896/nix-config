@@ -334,6 +334,53 @@ in {
     };
   };
 
+  ###########################################################
+  #
+  # Kitty Configuration
+  #
+  # Useful Hot Keys for Linux(replace `ctrl + shift` with `cmd` on macOS)):
+  #   1. Increase Font Size: `ctrl + shift + =` | `ctrl + shift + +`
+  #   2. Decrease Font Size: `ctrl + shift + -` | `ctrl + shift + _`
+  #   3. And Other common shortcuts such as Copy, Paste, Cursor Move, etc.
+  #
+  ###########################################################
+  kitty = {
+    enable = true;
+    # kitty has catppuccin theme built-in,
+    # all the built-in themes are packaged into an extra package named `kitty-themes`
+    # and it's installed by home-manager if `theme` is specified.
+    themeFile = "Catppuccin-Mocha";
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      # use different font size on macOS
+      size =
+        if pkgs.stdenv.isDarwin
+        then 14
+        else 13;
+    };
+
+    # consistent with wezterm
+    keybindings = {
+      "ctrl+shift+m" = "toggle_maximized";
+      "ctrl+shift+f" = "show_scrollback"; # search in the current window
+    };
+
+    settings = {
+      background_opacity = "0.93";
+      macos_option_as_alt = true; # Option key acts as Alt on macOS
+      enable_audio_bell = false;
+      tab_bar_edge = "top"; # tab bar on top
+      #  To resolve issues:
+      #    1. https://github.com/ryan4yin/nix-config/issues/26
+      #    2. https://github.com/ryan4yin/nix-config/issues/8
+      #  Spawn a fish in login mode via `bash`
+      shell = "${pkgs.bash}/bin/bash --login -c 'fish --login --interactive'";
+    };
+
+    # macOS specific settings
+    darwinLaunchOptions = ["--start-as=maximized"];
+  };
+
   ssh = {
     enable = true;
     includes = [
@@ -442,6 +489,60 @@ in {
     '';
   };
 
+  # a cat(1) clone with syntax highlighting and Git integration.
+  bat = {
+    enable = true;
+    config = {
+      pager = "less -FR";
+    };
+  };
+
+  # A modern replacement for ‘ls’
+  eza = {
+    enable = true;
+    enableFishIntegration = true;
+    git = true;
+    icons = "auto";
+  };
+
+  # A command-line fuzzy finder
+  fzf = {
+    enable = true;
+    # https://github.com/catppuccin/fzf
+    # catppuccin-mocha
+    colors = {
+      "bg+" = "#313244";
+      "bg" = "#1e1e2e";
+      "spinner" = "#f5e0dc";
+      "hl" = "#f38ba8";
+      "fg" = "#cdd6f4";
+      "header" = "#f38ba8";
+      "info" = "#cba6f7";
+      "pointer" = "#f5e0dc";
+      "marker" = "#f5e0dc";
+      "fg+" = "#cdd6f4";
+      "prompt" = "#cba6f7";
+      "hl+" = "#f38ba8";
+    };
+  };
+
+  # zoxide is a smarter cd command, inspired by z and autojump.
+  # It remembers which directories you use most frequently,
+  # so you can "jump" to them in just a few keystrokes.
+  # zoxide works on all major shells.
+  #
+  #   z foo              # cd into highest ranked directory matching foo
+  #   z foo bar          # cd into highest ranked directory matching foo and bar
+  #   z foo /            # cd into a subdirectory starting with foo
+  #
+  #   z ~/foo            # z also works like a regular cd command
+  #   z foo/             # cd into relative path
+  #   z ..               # cd one level up
+  #   z -                # cd into previous directory
+  #
+  #   zi foo             # cd with interactive selection (using fzf)
+  #
+  #   z foo<SPACE><TAB>  # show interactive completions (zoxide v0.8.0+, bash 4.4+/fish/zsh only)
   zoxide = {
     enable = true;
     enableZshIntegration = true;
@@ -556,5 +657,22 @@ in {
     enable = true;
     enableZshIntegration = true;
     enableFishIntegration = true;
+
+    settings = {
+      character = {
+        success_symbol = "[›](bold green)";
+        error_symbol = "[›](bold red)";
+      };
+      aws = {
+        symbol = "🅰 ";
+      };
+      gcloud = {
+        # do not show the account/project's info
+        # to avoid the leak of sensitive information when sharing the terminal
+        format = "on [$symbol$active(\($region\))]($style) ";
+        symbol = "🅶 ️";
+      };
+      command_timeout = 750;
+    };
   };
 }

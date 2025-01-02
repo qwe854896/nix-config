@@ -9,20 +9,39 @@ with pkgs; [
   btop
   coreutils
   fastfetch
+  # search for files by name, faster than find
   fd
+  # Interactively filter its input using fuzzy searching, not limit to filenames.
   fzf
   killall
   openssh
+  # search for files by its content, replacement of grep
   ripgrep
   sqlite
   wget
   zip
+
+  # misc
+  tldr
+  cowsay
+  gnupg
+  gnumake
+
+  # productivity
+  caddy # A webserver with automatic HTTPS via Let's Encrypt(replacement of nginx)
+  croc # File transfer between computers securely and easily
+
+  # A fast and polyglot tool for code searching, linting, rewriting at large scale
+  # supported languages: only some mainstream languages currently(do not support nix/nginx/yaml/toml/...)
+  ast-grep
 
   # Encryption and security tools
   age
   age-plugin-yubikey
   gnupg
   libfido2
+  sops
+  rclone
 
   # Cloud-related tools and SDKs
   docker
@@ -67,7 +86,13 @@ with pkgs; [
 
   # Nix utilities
   nix-output-monitor
-  nix-index
+  hydra-check # check hydra(nix's build farm) for the build status of a package
+  nix-index # A small utility to index nix store paths
+  nix-init # generate nix derivation from url
+  # https://github.com/nix-community/nix-melt
+  nix-melt # A TUI flake.lock viewer
+  # https://github.com/utdemir/nix-tree
+  nix-tree # A TUI to visualize the dependency graph of a nix derivation
 
   # Misc utilities
   cowsay
@@ -129,4 +154,17 @@ with pkgs; [
   # GUI tools
   moonlight-qt
   wl-clipboard
+
+  ### From Home Manager ###
+  sad # CLI search and replace, just like sed, but with diff preview.
+  yq-go # yaml processor https://github.com/mikefarah/yq
+  just # a command runner like make, but simpler
+  delta # A viewer for git and diff output
+  lazygit # Git terminal UI.
+  hyperfine # command-line benchmarking tool
+  gping # ping, but with a graph(TUI)
+  doggo # DNS client for humans
+  duf # Disk Usage/Free Utility - a better 'df' alternative
+  du-dust # A more intuitive version of `du` in rust
+  gdu # disk usage analyzer(replacement of `du`)
 ]

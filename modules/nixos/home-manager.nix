@@ -5,8 +5,8 @@
   ...
 }: let
   user = "jhc";
-  sharedFiles = import ../shared/files.nix {inherit config pkgs;};
   # additionalFiles = import ./files.nix {inherit user config pkgs;};
+  sharedFiles = import ../shared/files.nix {inherit config pkgs;};
 in {
   # It me
   users.users.${user} = {
@@ -38,6 +38,14 @@ in {
           # paths it should manage.
           username = "${user}";
           homeDirectory = "/home/${user}";
+
+          # `programs.git` will generate the config file: ~/.config/git/config
+          # to make git use this config file, `~/.gitconfig` should not exist!
+          #
+          #    https://git-scm.com/docs/git-config#Documentation/git-config.txt---global
+          activation.removeExistingGitconfig = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
+            rm -f ${config.home.homeDirectory}/.gitconfig
+          '';
 
           stateVersion = "24.05";
         };

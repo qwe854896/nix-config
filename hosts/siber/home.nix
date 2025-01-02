@@ -5,7 +5,6 @@ _: {
     enable = true;
     extraConfig = ''
       Host github.com
-        Hostname github.com
         IdentityFile ~/.ssh/jhc
         IdentitiesOnly yes
     '';

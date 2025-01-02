@@ -48,6 +48,14 @@ in {
           "emacs-launcher.command".source = myEmacsLauncher;
         };
       };
+      programs.ssh = {
+        enable = true;
+        extraConfig = ''
+          Host github.com
+            IdentityFile ~/.ssh/jhc@mba
+            IdentitiesOnly yes
+        '';
+      };
     };
   };
 

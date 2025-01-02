@@ -1,5 +1,11 @@
-{inputs, ...}: let
-  mysecrets = builtins.toString inputs.mysecrets;
+{
+  mysecrets,
+  sops-nix,
+  lib,
+  pkgs,
+  ...
+}: let
+  mysecrets_path = builtins.toString mysecrets;
 
   noaccess = {
     mode = "0000";
@@ -10,39 +16,38 @@
     mode = "0500";
     owner = "root";
   };
+in
+  # user_readable = {
+  #   mode = "0500";
+  #   owner = "jhc";
+  # };
+  {
+    sops = {
+      # This will add secrets.yml to the nix store
+      defaultSopsFile = "${mysecrets_path}/secrets.yaml";
 
-  user_readable = {
-    mode = "0500";
-    owner = "jhc";
-  };
-in {
-  imports = [
-    inputs.sops-nix.nixosModules.sops
-  ];
+      age = {
+        # This will automatically import SSH keys as age keys
+        sshKeyPaths = [
+          (lib.mkIf pkgs.stdenv.hostPlatform.isLinux "/persist/etc/ssh/ssh_host_ed25519_key")
+          (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "/etc/ssh/ssh_host_ed25519_key")
+        ];
+      };
 
-  sops = {
-    # This will add secrets.yml to the nix store
-    defaultSopsFile = "${mysecrets}/secrets.yaml";
+      secrets = {
+        hashedPassword =
+          {
+            neededForUsers = true;
+          }
+          // high_security;
 
-    age = {
-      # This will automatically import SSH keys as age keys
-      sshKeyPaths = ["/persist/etc/ssh/ssh_host_ed25519_key"];
+        # .age means the decrypted file is still encrypted by age(via a passphrase)
+        "jhcheng-gpg-subkeys.priv.age" =
+          {
+            format = "binary";
+            sopsFile = "${mysecrets_path}/jhcheng-gpg-subkeys-2034-09-03.priv.age";
+          }
+          // noaccess;
+      };
     };
-
-    secrets = {
-      hashedPassword =
-        {
-          neededForUsers = true;
-        }
-        // high_security;
-
-      # .age means the decrypted file is still encrypted by age(via a passphrase)
-      "jhcheng-gpg-subkeys.priv.age" =
-        {
-          format = "binary";
-          sopsFile = "${mysecrets}/jhcheng-gpg-subkeys-2034-09-03.priv.age";
-        }
-        // noaccess;
-    };
-  };
-}
+  }

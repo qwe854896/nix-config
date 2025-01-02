@@ -6,9 +6,7 @@ with pkgs; [
   aspellDicts.en
   bash-completion
   bat
-  btop
   coreutils
-  fastfetch
   # search for files by name, faster than find
   fd
   # Interactively filter its input using fuzzy searching, not limit to filenames.
@@ -20,13 +18,8 @@ with pkgs; [
   # A safe and ergonomic alternative to rm
   rip2
   sqlite
-  wget
-  zip
 
   # misc
-  tldr
-  cowsay
-  gnupg
   gnumake
 
   # productivity
@@ -72,10 +65,7 @@ with pkgs; [
   # Text and terminal utilities
   htop
   hunspell
-  iftop
   jetbrains-mono
-  jq
-  neovim
   tree
   tmux
   unrar
@@ -135,14 +125,12 @@ with pkgs; [
   file
   findutils
   which
-  tree
   gnutar
   rsync
 
   # TUI tools
   fastfetch
   neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  just
 
   # system call monitoring
   tcpdump # network sniffer
@@ -160,13 +148,11 @@ with pkgs; [
   ### From Home Manager ###
   sad # CLI search and replace, just like sed, but with diff preview.
   yq-go # yaml processor https://github.com/mikefarah/yq
-  just # a command runner like make, but simpler
   delta # A viewer for git and diff output
   lazygit # Git terminal UI.
   hyperfine # command-line benchmarking tool
   gping # ping, but with a graph(TUI)
   doggo # DNS client for humans
-  duf # Disk Usage/Free Utility - a better 'df' alternative
   du-dust # A more intuitive version of `du` in rust
   gdu # disk usage analyzer(replacement of `du`)
 ]

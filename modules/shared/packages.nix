@@ -17,6 +17,8 @@ with pkgs; [
   openssh
   # search for files by its content, replacement of grep
   ripgrep
+  # A safe and ergonomic alternative to rm
+  rip2
   sqlite
   wget
   zip

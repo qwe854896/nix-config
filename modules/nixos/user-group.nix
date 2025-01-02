@@ -22,10 +22,11 @@
           "wheel"
         ];
         openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIKOORAmau4nEX44VVcA7RZLP0Ktfx7XrQ3bS8VyIsR8 jhc@air"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICulqU2bsFu8qMXLKBD+ZZEis+HVLZ5hTYKCnkbi4zZr jhc@mba"
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDcGrsoMSheEGxr/n8EIM9yi4A7B8osOS6HxHxzS+VGs jhc@ios"
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJNeNtX9kuPIcPX4EZGtBzXoYRo1HLDCpwP7dzTHNfra jhc@siber"
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP2xOjSBwDVRGgI1yZy9P6G2jhV4mP9UV13HDNP5qQVr jhc@tuxedo"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB5UJuezTHnw7Ag7bbVviudSF23lY6x4mIb6sS321U52 kieann.cs13@nycu.edu.tw"
         ];
       };
 

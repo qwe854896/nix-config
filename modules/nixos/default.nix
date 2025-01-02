@@ -25,10 +25,8 @@
     nix-gaming.nixosModules.pipewireLowLatency
   ];
 
-  environment.systemPackages = with pkgs;
-    [
-    ]
-    ++ (import ../shared/packages.nix {inherit pkgs;});
+  environment.systemPackages =
+    (import ./packages.nix {inherit pkgs;}) ++ (import ../shared/packages.nix {inherit pkgs;});
 
   xdg.portal = {
     enable = true;

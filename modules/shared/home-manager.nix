@@ -270,14 +270,24 @@ in {
     enable = true;
     settings = {
       cursor = {
-        style = "Block";
+        style = {
+          shape = "Block";
+          blinking = "Always";
+        };
+        blink_timeout = 10;
       };
 
       window = {
-        opacity = 1.0;
+        blur = true;
+        opacity = 0.7;
         padding = {
-          x = 24;
-          y = 24;
+          x = 4;
+          y = 4;
+        };
+        decorations = "Transparent";
+        class = {
+          instance = "Alacritty";
+          general = "Alacritty";
         };
       };
 
@@ -294,14 +304,6 @@ in {
 
       # terminal.shell = "${pkgs.zsh}/bin/zsh";
       terminal.shell = "${pkgs.fish}/bin/fish";
-
-      # dynamic_padding = true;
-      # decorations = "full";
-      # title = "Terminal";
-      # class = {
-      #   instance = "Alacritty";
-      #   general = "Alacritty";
-      # };
 
       colors = {
         primary = {

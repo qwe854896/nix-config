@@ -6,7 +6,6 @@
     ./hyprland
     ./kitty.nix
     ./packages.nix
-    ./password-store.nix
     ./starship.nix
     ./tui-utils.nix
     ./xdg.nix

@@ -5,7 +5,10 @@
   ...
 }: let
   name = "Jun-Hong Cheng";
-  user = "jhcheng";
+  user =
+    if pkgs.stdenv.hostPlatform.isDarwin
+    then "jhcheng"
+    else "jhc";
   email = "qwe854896@gmail.com";
 in {
   # Let Home Manager install and manage itself.
@@ -81,6 +84,13 @@ in {
     ignores = ["*.swp"];
     userName = name;
     userEmail = email;
+    includes = [
+      {
+        # use different email & name for work
+        path = "~/work/.gitconfig";
+        condition = "gitdir:~/work/";
+      }
+    ];
     lfs = {
       enable = true;
     };
@@ -93,6 +103,8 @@ in {
       # commit.gpgsign = true;
       pull.rebase = true;
       rebase.autoStash = true;
+      trim.bases = "develop,master,main"; # for git-trim
+      push.autoSetupRemote = true;
     };
     signing = {
       key = "97983B8C7078C5B8";
@@ -445,7 +457,13 @@ in {
 
   gpg = {
     enable = true;
-    homedir = "/Users/${user}/.gnupg";
+    homedir =
+      if pkgs.stdenv.hostPlatform.isLinux
+      then "/home/${user}/.gnupg"
+      else if pkgs.stdenv.hostPlatform.isDarwin
+      then "/Users/${user}/.gnupg"
+      else "";
+
     publicKeys = [
       {
         # TODO: separate the config
@@ -518,7 +536,12 @@ in {
     ]);
     settings = {
       # TODO: need to separate config
-      PASSWORD_STORE_DIR = "/Users/${user}/.password-store";
+      PASSWORD_STORE_DIR =
+        if pkgs.stdenv.hostPlatform.isLinux
+        then "/home/${user}/.password-store"
+        else if pkgs.stdenv.hostPlatform.isDarwin
+        then "/Users/${user}/.password-store"
+        else "";
       PASSWORD_STORE_KEY = "64DAB0AA";
       PASSWORD_SIGNING_KEY = "7078C5B8";
       PASSWORD_STORE_CLIP_TIME = "60";

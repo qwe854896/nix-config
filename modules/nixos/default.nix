@@ -14,7 +14,6 @@
     ./misc.nix
     ./networking.nix
     ./nvidia.nix
-    ./packages.nix
     ./peripherals.nix
     ./security.nix
     ./ssh.nix
@@ -25,6 +24,11 @@
     ./zram.nix
     nix-gaming.nixosModules.pipewireLowLatency
   ];
+
+  environment.systemPackages = with pkgs;
+    [
+    ]
+    ++ (import ../shared/packages.nix {inherit pkgs;});
 
   xdg.portal = {
     enable = true;

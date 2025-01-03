@@ -12,6 +12,4 @@ _: {
       enableSSHSupport = false;
     };
   };
-  # https://discourse.nixos.org/t/slow-build-at-building-man-cache/52365/3
-  documentation.man.generateCaches = false;
 }

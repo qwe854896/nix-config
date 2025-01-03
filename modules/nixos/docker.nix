@@ -16,16 +16,16 @@
     distrobox
     dive
     podman-tui
-    docker-compose
+    # docker-compose
     podman-compose
   ];
 
-  virtualisation.docker = {
-    enable = true;
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
-  };
+  # virtualisation.docker = {
+  #   enable = true;
+  #   rootless = {
+  #     enable = true;
+  #     setSocketVariable = true;
+  #   };
+  # };
   hardware.nvidia-container-toolkit.enable = true;
 }

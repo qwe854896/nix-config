@@ -18,6 +18,8 @@ with pkgs; [
   # A safe and ergonomic alternative to rm
   rip2
   sqlite
+  # Intuitive find & replace CLI (sed alternative)
+  sd
 
   # misc
   gnumake
@@ -120,6 +122,7 @@ with pkgs; [
   socat # replacement of openbsd-netcat
   nmap # A utility for network discovery and security auditing
   ipcalc # it is a calculator for the IPv4/v6 addresses
+  httpie
 
   # misc
   file
@@ -140,6 +143,7 @@ with pkgs; [
   iftop
   btop
   sysbench
+  procs
 
   # GUI tools
   moonlight-qt

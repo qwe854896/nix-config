@@ -14,6 +14,9 @@ in {
   # Let Home Manager install and manage itself.
   home-manager.enable = true;
 
+  # https://discourse.nixos.org/t/slow-build-at-building-man-cache/52365
+  man.generateCaches = false;
+
   # Shared shell configuration
   zsh = {
     enable = true;

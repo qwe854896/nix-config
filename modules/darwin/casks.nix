@@ -23,4 +23,8 @@ _: [
   # Browsers
   "firefox"
   "brave-browser"
+
+  # Network Tools
+  "wireshark"
+  "burp-suite"
 ]

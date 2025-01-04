@@ -7,5 +7,6 @@ extend-exclude = ["themes/", "data/", "static-surprises/", "resources/"]
 binary = false
 # ignore some special identifiers(sha256, mac address, crypto keys, etc)
 extend-ignore-re = [
-  "06413w510jmld20i4lik9b36cfafm501864yq8k4vxl5r4hn0j0h" # emacsOverlaySHA256
+  "06413w510jmld20i4lik9b36cfafm501864yq8k4vxl5r4hn0j0h", # emacsOverlaySHA256
+  "iterm2"
 ]

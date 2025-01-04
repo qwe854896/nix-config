@@ -11,6 +11,7 @@ _: [
   "appcleaner"
   "keepingyouawake"
   "keka"
+  "kekaexternalhelper"
 
   # Entertainment Tools
   "iina"

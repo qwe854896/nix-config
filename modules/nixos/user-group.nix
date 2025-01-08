@@ -20,7 +20,7 @@
           "users"
           "networkmanager"
           "wheel"
-          "docker"
+          # "docker"
         ];
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICulqU2bsFu8qMXLKBD+ZZEis+HVLZ5hTYKCnkbi4zZr jhc@mba"

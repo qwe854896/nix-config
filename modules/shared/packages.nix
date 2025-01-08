@@ -40,10 +40,6 @@ with pkgs; [
   sops
   rclone
 
-  # Cloud-related tools and SDKs
-  docker
-  docker-compose
-
   # Media-related packages
   emacs-all-the-icons-fonts
   dejavu_fonts

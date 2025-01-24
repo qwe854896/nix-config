@@ -106,7 +106,7 @@
 
         AppleInterfaceStyle = "Dark";
         AppleKeyboardUIMode = 3; # Mode 3 enables full keyboard control.
-        ApplePressAndHoldEnabled = true;
+        ApplePressAndHoldEnabled = false;
 
         # If you press and hold certain keyboard keys when in a text area, the key’s character begins to repeat.
         # This is very useful for vim users, they use `hjkl` to move cursor.

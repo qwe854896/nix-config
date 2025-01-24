@@ -13,6 +13,8 @@ _: [
   "keka"
   "kekaexternalhelper"
 
+  "blackhole-2ch"
+
   # Entertainment Tools
   "iina"
 

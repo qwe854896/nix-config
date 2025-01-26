@@ -46,7 +46,7 @@
       };
 
       screencapture = {
-        target = "file";
+        target = "clipboard";
         location = "~/Desktop";
         type = "png";
       };

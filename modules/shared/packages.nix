@@ -41,7 +41,6 @@ with pkgs; [
   rclone
 
   # Media-related packages
-  emacs-all-the-icons-fonts
   dejavu_fonts
   ffmpeg
   font-awesome

@@ -3,7 +3,7 @@ _: [
   "visual-studio-code"
 
   # Communication Tools
-  "discord"
+  # "discord" ### installed via Vesktop
   "telegram"
 
   # Utility Tools

@@ -46,8 +46,10 @@ in {
         {path = "/Applications/Brave Browser.app/";}
         {path = "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/";}
         {path = "/Applications/Firefox.app/";}
+        {path = "/Applications/Zen Browser.app/";}
         {path = "/Applications/Telegram.app/";}
         {path = "/Applications/Discord.app/";}
+        {path = "${pkgs.vesktop}/Applications/Vesktop.app/";}
         {path = "/Applications/Messenger.app/";}
         {path = "/Applications/Joplin.app/";}
         {path = "/Applications/Moonlight.app/";}

@@ -26,6 +26,7 @@ _: [
   # Browsers
   "firefox"
   "brave-browser"
+  "zen-browser"
 
   # Network Tools
   "wireshark"

@@ -143,6 +143,7 @@ with pkgs; [
   # GUI tools
   moonlight-qt
   wl-clipboard
+  vesktop
 
   ### From Home Manager ###
   sad # CLI search and replace, just like sed, but with diff preview.

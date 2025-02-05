@@ -37,7 +37,7 @@
         QuitMenuItem = true; # enable quit menu item
 
         ShowExternalHardDrivesOnDesktop = true;
-        ShowHardDrivesOnDesktop = true;
+        ShowHardDrivesOnDesktop = false;
         ShowMountedServersOnDesktop = true;
         ShowRemovableMediaOnDesktop = true;
 

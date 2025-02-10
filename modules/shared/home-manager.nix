@@ -389,6 +389,8 @@ in {
 
   zellij = {
     enable = true;
+    enableZshIntegration = false; # annoying
+    enableFishIntegration = false; # annoying
     settings = {
       window.option_as_alt = "Both";
     };

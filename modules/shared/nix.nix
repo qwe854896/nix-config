@@ -29,13 +29,6 @@
             (final: prev: {
               neovim = nixvim.packages.${pkgs.system}.default;
             })
-          ]
-          ++ [
-            (self: super: {
-              bpftrace = super.bpftrace.override {
-                llvmPackages = super.llvmPackages_18;
-              };
-            })
           ];
   };
 

@@ -815,8 +815,15 @@
     },
     "hyprlang": {
       "inputs": {
+        "hyprland-qt-support": "hyprland-qt-support",
+        "hyprlang": [
+          "hyprland",
+          "hyprlang"
+        ],
         "hyprutils": [
           "hyprland",
+          "hyprland-qtutils",
+          "hyprlang",
           "hyprutils"
         ],
         "nixpkgs": [
@@ -1326,7 +1333,7 @@
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
+        "owner": "nixos",
         "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
@@ -1364,11 +1371,11 @@
         "volt-nvim": "volt-nvim"
       },
       "locked": {
-        "lastModified": 1738711369,
-        "narHash": "sha256-j9tM4JQQbnOH1TdYBVwerDLlCh86CuLokILVE8jz7rY=",
+        "lastModified": 1739122072,
+        "narHash": "sha256-Go7i1Uc2giAfOOwtgtUKWhe+KiEcTKS2AvvrAlahJnI=",
         "owner": "elythh",
         "repo": "nixvim",
-        "rev": "b28c11a1e8c4473a6bc02936ad7feba3e877c41b",
+        "rev": "b1270361a52a4e6e45d3845f1d30526c5cddf127",
         "type": "github"
       },
       "original": {
@@ -1500,7 +1507,7 @@
       "inputs": {
         "flake-compat": "flake-compat_5",
         "gitignore": "gitignore_5",
-        "nixpkgs": "nixpkgs_8"
+        "nixpkgs": "nixpkgs_9"
       },
       "locked": {
         "lastModified": 1767281941,
@@ -1595,7 +1602,7 @@
     },
     "sops-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_9"
+        "nixpkgs": "nixpkgs_10"
       },
       "locked": {
         "lastModified": 1767826491,

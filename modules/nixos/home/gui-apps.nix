@@ -7,7 +7,7 @@
   home.packages = with pkgs; [
     # instant messaging
     telegram-desktop
-    discord
+    vesktop
 
     # GUI tools
     kate

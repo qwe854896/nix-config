@@ -1,6 +1,7 @@
 {
   pkgs,
   hyprland,
+  config,
   ...
 }: let
   pkgs-unstable = hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
@@ -13,6 +14,10 @@ in {
     # if you also want 32-bit support (e.g for Steam)
     enable32Bit = true;
     package32 = pkgs-unstable.pkgsi686Linux.mesa.drivers;
+
+    extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+    ];
   };
 
   # Load nvidia driver for Xorg and Wayland
@@ -47,6 +52,10 @@ in {
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
+  };
+
+  environment.sessionVariables = {
+    __EGL_VENDOR_LIBRARY_FILENAMES = "${config.hardware.nvidia.package}/share/glvnd/egl_vendor.d/10_nvidia.json";
   };
 }

@@ -32,8 +32,11 @@
       enable = true;
       # let `xdg-open` to open the url with the correct application.
       defaultApplications = let
-        browser = ["brave-browser.desktop"];
-        editor = ["nvim.desktop" "code.desktop"];
+        browser = ["zen.desktop"];
+        editor = [
+          "nvim.desktop"
+          "code.desktop"
+        ];
       in {
         "application/json" = browser;
         "application/pdf" = browser; # TODO: pdf viewer

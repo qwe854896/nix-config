@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  zen-browser,
+  ...
+}: {
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     # instant messaging
@@ -14,6 +18,9 @@
 
     # Media
     pavucontrol
+
+    # Browsers
+    zen-browser.packages."x86_64-linux".default
   ];
 
   programs = {
@@ -82,6 +89,6 @@
   };
 
   home.sessionVariables = {
-    BROWSER = "brave";
+    BROWSER = "zen";
   };
 }

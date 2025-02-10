@@ -14,7 +14,6 @@
     imv
     joplin
     joplin-desktop
-    flameshot
 
     # Media
     pavucontrol
@@ -81,6 +80,9 @@
 
   services.flameshot = {
     enable = true;
+    package = pkgs.flameshot.override {
+      enableWlrSupport = true;
+    };
     settings = {
       General = {
         uiColor = "#3366ff";

@@ -50,6 +50,7 @@
         # misc
         ".config/fcitx5"
         ".config/pulse"
+        ".config/vesktop"
         ".pki"
         ".steam"
 
@@ -62,6 +63,7 @@
 
         # browsers
         ".mozilla"
+        ".zen"
         ".config/BraveSoftware"
 
         # language package manager

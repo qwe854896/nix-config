@@ -29,10 +29,6 @@
     # hyprland extra configs
     extraConfig = builtins.readFile ./conf/hyprland.conf;
 
-    # Plugins
-    plugins = [
-    ];
-
     systemd.variables = ["--all"];
   };
 

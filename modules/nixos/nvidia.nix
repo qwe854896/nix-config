@@ -24,9 +24,6 @@ in {
   # Will install nvidia-vaapi-driver by default
   services.xserver.videoDrivers = ["nvidia"];
 
-  # Prevent broken graphics after sleep
-  boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
-
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;

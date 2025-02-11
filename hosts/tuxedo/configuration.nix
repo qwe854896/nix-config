@@ -6,34 +6,36 @@ _: {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "tuxedo"; # Define your hostname.
-  networking.defaultGateway = {
-    address = "127.0.0.1";
-    interface = "eno1";
-  };
-  networking.nameservers = [
-    "8.8.8.8"
-    "1.1.1.1"
-  ];
-  networking.interfaces."eno1" = {
-    useDHCP = false;
-    ipv4 = {
-      addresses = [
-        {
-          address = "127.0.0.1";
-          prefixLength = 27;
-        }
-      ];
+  networking = {
+    hostName = "tuxedo"; # Define your hostname.
+    defaultGateway = {
+      address = "127.0.0.1";
+      interface = "eno1";
     };
+    nameservers = [
+      "8.8.8.8"
+      "1.1.1.1"
+    ];
+    interfaces."eno1" = {
+      useDHCP = false;
+      ipv4 = {
+        addresses = [
+          {
+            address = "127.0.0.1";
+            prefixLength = 27;
+          }
+        ];
+      };
+    };
+    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+    # Configure network proxy if necessary
+    # proxy.default = "http://user:password@proxy:port/";
+    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+    # Enable networking
+    networkmanager.enable = true;
   };
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

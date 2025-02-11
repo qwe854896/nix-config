@@ -19,7 +19,7 @@ in {
   system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     sops-nix.packages."${pkgs.system}".default
   ];
 

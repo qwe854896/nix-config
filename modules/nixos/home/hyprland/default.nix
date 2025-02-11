@@ -57,7 +57,7 @@
     extraConfig = builtins.readFile ./conf/hyprlock.conf;
 
     # https://github.com/hyprwm/hyprlock/issues/128
-    package = pkgs.hyprlock.overrideAttrs (old: {
+    package = pkgs.hyprlock.overrideAttrs (_: {
       patchPhase = ''
         substituteInPlace src/core/hyprlock.cpp \
         --replace "5000" "16"

@@ -26,7 +26,7 @@
             )
           )
           ++ [
-            (final: prev: {
+            (_: _: {
               neovim = nixvim.packages.${pkgs.system}.default;
             })
           ];

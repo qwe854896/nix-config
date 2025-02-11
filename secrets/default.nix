@@ -1,6 +1,5 @@
 {
   mysecrets,
-  sops-nix,
   lib,
   pkgs,
   ...

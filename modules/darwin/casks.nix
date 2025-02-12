@@ -12,6 +12,7 @@ _: [
   "keepingyouawake"
   "keka"
   "kekaexternalhelper"
+  "scroll-reverser"
 
   "blackhole-2ch"
 

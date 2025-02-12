@@ -89,6 +89,9 @@
       };
     };
   };
+  # https://github.com/nix-community/home-manager/pull/5785
+  # Wait for this PR to be merged
+  systemd.user.services.flameshot.Unit.After = ["graphical-session.target"];
 
   home.sessionVariables = {
     BROWSER = "zen";

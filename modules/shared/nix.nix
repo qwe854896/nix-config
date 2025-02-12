@@ -95,7 +95,6 @@
       // (
         if pkgs.stdenv.hostPlatform.isDarwin
         then {
-          user = "root";
           interval = {
             Weekday = 0;
             Hour = 2;

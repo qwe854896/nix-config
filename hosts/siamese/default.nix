@@ -12,7 +12,6 @@ in {
   ];
 
   # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-darwin";
 
   # Turn off NIX_PATH warnings now that we're using flakes

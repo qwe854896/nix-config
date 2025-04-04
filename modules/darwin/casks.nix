@@ -18,6 +18,7 @@ _: [
 
   # Entertainment Tools
   "iina"
+  "obs"
 
   # Productivity Tools
   "raycast"

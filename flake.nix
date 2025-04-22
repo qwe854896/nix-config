@@ -90,7 +90,7 @@
     };
 
     # nixvim.url = "github:qwe854896/nixvim";
-    nixvim.url = "github:elythh/nixvim";
+    nixvim.url = "github:elythh/nixvim?rev=b28c11a1e8c4473a6bc02936ad7feba3e877c41b";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };

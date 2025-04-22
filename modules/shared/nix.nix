@@ -4,7 +4,16 @@
   nixpkgs,
   nixvim,
   ...
-}: {
+}: let
+  nixvimExtended = nixvim.nixvimConfigurations.x86_64-linux.nixvim.extendModules {
+    modules = [
+      {
+        colorschemes.catppuccin.enable = true;
+        plugins.lsp.servers.zls.enable = true;
+      }
+    ];
+  };
+in {
   # Allow unfree packages
   nixpkgs = {
     config = {
@@ -27,7 +36,7 @@
           )
           ++ [
             (_: _: {
-              neovim = nixvim.packages.${pkgs.system}.default;
+              neovim = nixvimExtended.config.build.package;
             })
           ];
   };

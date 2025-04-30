@@ -45,7 +45,7 @@ in {
         {path = "/Applications/Brave Browser.app/";}
         {path = "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/";}
         {path = "/Applications/Firefox.app/";}
-        {path = "/Applications/Zen Browser.app/";}
+        {path = "/Applications/Zen.app/";}
         {path = "/Applications/Telegram.app/";}
         {path = "${pkgs.vesktop}/Applications/Vesktop.app/";}
         {path = "/Applications/Messenger.app/";}

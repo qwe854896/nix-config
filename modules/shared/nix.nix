@@ -3,9 +3,10 @@
   pkgs,
   nixpkgs,
   nixvim,
+  system,
   ...
 }: let
-  nixvimExtended = nixvim.nixvimConfigurations.x86_64-linux.nixvim.extendModules {
+  nixvimExtended = nixvim.nixvimConfigurations.${system}.nixvim.extendModules {
     modules = [
       {
         colorschemes.catppuccin.enable = true;

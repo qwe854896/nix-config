@@ -10,7 +10,7 @@
     vesktop
 
     # GUI tools
-    kate
+    kdePackages.kate
     imv
     joplin
     joplin-desktop

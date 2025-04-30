@@ -1,5 +1,5 @@
-
 ## Layout
+
 ```
 .
 ├── dock               # MacOS dock configuration

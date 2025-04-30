@@ -20,75 +20,74 @@
     "aarch64-darwin"
   ];
   forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+
+  # System builder with common modules
+  mkSystem = {
+    system,
+    hostName,
+    systemType,
+    extraModules ? [],
+  }: let
+    lib =
+      if systemType == "nixos"
+      then nixpkgs.lib
+      else if systemType == "darwin"
+      then nix-darwin.lib
+      else throw "Unsupported system type: ${systemType}";
+
+    baseModules =
+      if systemType == "nixos"
+      then [
+        vscode-server.nixosModules.default
+        (_: {services.vscode-server.enable = true;})
+        disko.nixosModules.default
+      ]
+      else [];
+
+    commonModules = [
+      ../modules/${systemType}
+      ../modules/${systemType}/home-manager.nix
+      ../modules/shared
+      ../secrets
+      home-manager."${systemType}Modules".home-manager
+      {
+        home-manager.extraSpecialArgs = inputs;
+      }
+      ../hosts/${hostName}
+      sops-nix."${systemType}Modules".default
+    ];
+  in
+    lib."${systemType}System" {
+      inherit system;
+      specialArgs =
+        inputs
+        // {
+          inherit system;
+        };
+      modules = baseModules ++ commonModules ++ extraModules;
+    };
 in {
   nixosConfigurations = {
-    siber = nixpkgs.lib.nixosSystem {
+    siber = mkSystem {
+      systemType = "nixos";
       system = "x86_64-linux";
-      modules = [
-        ../modules/nixos
-        ../modules/nixos/home-manager.nix
-        ../modules/shared
-        ../secrets
-        ../hosts/siber
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            extraSpecialArgs = inputs;
-          };
-        }
-
-        vscode-server.nixosModules.default
-        (_: {
-          services.vscode-server.enable = true;
-        })
-
-        disko.nixosModules.default
-        sops-nix.nixosModules.default
-      ];
-      specialArgs = inputs;
+      hostName = "siber";
     };
 
-    tuxedo = nixpkgs.lib.nixosSystem {
+    tuxedo = mkSystem {
+      systemType = "nixos";
       system = "x86_64-linux";
-      modules = [
-        ../modules/nixos
-        ../modules/nixos/home-manager.nix
-        ../modules/shared
-        ../secrets
-        ../hosts/tuxedo
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            extraSpecialArgs = inputs;
-          };
-        }
-
-        vscode-server.nixosModules.default
-        (_: {
-          services.vscode-server.enable = true;
-        })
-
-        disko.nixosModules.default
-        sops-nix.nixosModules.default
-      ];
-      specialArgs = inputs;
+      hostName = "tuxedo";
     };
   };
 
   darwinConfigurations = {
-    siamese = nix-darwin.lib.darwinSystem {
+    siamese = mkSystem {
+      systemType = "darwin";
       system = "aarch64-darwin";
-      modules = [
-        ../modules/darwin
-        ../modules/darwin/home-manager.nix
-        ../modules/shared
-        ../secrets
-        ../hosts/siamese
-        home-manager.darwinModules.home-manager
+      hostName = "siamese";
+      extraModules = [
         nix-homebrew.darwinModules.nix-homebrew
-        sops-nix.darwinModules.default
         {
           nix-homebrew = {
             user = "jhcheng";
@@ -104,33 +103,31 @@ in {
           };
         }
       ];
-      specialArgs = inputs;
     };
   };
 
+  # Formatter and development shells
   formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
   checks = forAllSystems (system: {
     pre-commit-check = pre-commit-hooks.lib.${system}.run {
       src = ../.;
       hooks = {
-        alejandra.enable = true; # formatter
+        alejandra.enable = true;
         typos = {
           enable = true;
           settings = {
-            write = true; # Automatically fix typos
-            configPath = "./.typos.toml"; # relative to the flake root
+            write = true;
+            configPath = "./.typos.toml";
           };
         };
         prettier = {
           enable = true;
           settings = {
-            write = true; # Automatically format files
-            configPath = "./.prettierrc.yaml"; # relative to the flake root
+            write = true;
+            configPath = "./.prettierrc.yaml";
           };
         };
-        # deadnix.enable = true; # detect unused variable bindings in `*.nix`
-        # statix.enable = true; # lints and suggestions for Nix code(auto suggestions)
       };
     };
   });
@@ -141,18 +138,11 @@ in {
     in {
       default = pkgs.mkShell {
         packages = with pkgs; [
-          # fix https://discourse.nixos.org/t/non-interactive-bash-errors-from-flake-nix-mkshell/33310
           bashInteractive
-
-          # Nix-related
           alejandra
           deadnix
           statix
-
-          # spell checker
           typos
-
-          # code formatter
           nodePackages.prettier
         ];
         inherit (self.checks.${system}.pre-commit-check) shellHook;

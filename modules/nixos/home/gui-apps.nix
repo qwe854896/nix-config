@@ -53,7 +53,7 @@
           "--enable-wayland-ime"
         ];
       };
-      extensions = with pkgs.vscode-extensions; [
+      profiles.default.extensions = with pkgs.vscode-extensions; [
         llvm-vs-code-extensions.vscode-clangd
         mkhl.direnv
       ];

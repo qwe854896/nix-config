@@ -52,7 +52,7 @@
       };
 
       WindowManager = {
-        GloballyEnabled = true;
+        GloballyEnabled = false;
         EnableStandardClickToShowDesktop = true;
         StandardHideDesktopIcons = false;
         StandardHideWidgets = false;

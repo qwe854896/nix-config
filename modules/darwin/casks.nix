@@ -31,6 +31,6 @@ _: [
   "zen"
 
   # Network Tools
-  "wireshark"
+  "wireshark-app"
   "burp-suite"
 ]

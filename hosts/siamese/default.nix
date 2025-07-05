@@ -47,6 +47,7 @@ in {
         {path = "/Applications/Firefox.app/";}
         {path = "/Applications/Zen.app/";}
         {path = "/Applications/Telegram.app/";}
+        {path = "/Applications/Signal.app/";}
         {path = "${pkgs.vesktop}/Applications/Vesktop.app/";}
         {path = "/Applications/Messenger.app/";}
         {path = "/Applications/Joplin.app/";}

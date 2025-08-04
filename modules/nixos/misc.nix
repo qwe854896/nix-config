@@ -23,6 +23,8 @@
     gvfs.enable = true; # Mount, trash, and other functionalities
   };
 
+  services.gnome.gcr-ssh-agent.enable = false;
+
   programs = {
     # The OpenSSH agent remembers private keys for you
     # so that you don’t have to type in passphrases every time you make an SSH connection.

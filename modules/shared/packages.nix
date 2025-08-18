@@ -51,9 +51,9 @@ with pkgs; [
   viu
 
   # Node.js development tools
-  nodePackages.npm # globally install npm
-  nodePackages.prettier
-  nodejs
+  # nodePackages.npm # globally install npm
+  # nodePackages.prettier
+  # nodejs
 
   # Python packages
   python3
@@ -142,7 +142,6 @@ with pkgs; [
 
   # GUI tools
   moonlight-qt
-  wl-clipboard
   vesktop
 
   ### From Home Manager ###

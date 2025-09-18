@@ -30,6 +30,7 @@
       "wireguard" = 1451685025;
       "Messenger" = 1480068668;
       "Windows App" = 1295203466;
+      "Bitwarden" = 1352778147;
     };
   };
 }

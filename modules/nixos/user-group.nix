@@ -28,6 +28,7 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJNeNtX9kuPIcPX4EZGtBzXoYRo1HLDCpwP7dzTHNfra jhc@siber"
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP2xOjSBwDVRGgI1yZy9P6G2jhV4mP9UV13HDNP5qQVr jhc@tuxedo"
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB5UJuezTHnw7Ag7bbVviudSF23lY6x4mIb6sS321U52 kieann.cs13@nycu.edu.tw"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPbRhCz+zKPCnvLdvPJb9R+IeXDStN7DB3k7H+wyBRTF drvoc4do@bitwarden"
         ];
       };
 

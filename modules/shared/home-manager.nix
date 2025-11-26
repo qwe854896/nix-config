@@ -381,6 +381,8 @@ in {
 
   ssh = {
     enable = true;
+    enableDefaultConfig = false;
+    matchBlocks."*" = {};
     includes = [
       (lib.mkIf pkgs.stdenv.hostPlatform.isLinux "/home/${user}/.ssh/config_external")
       (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "/Users/${user}/.ssh/config_external")

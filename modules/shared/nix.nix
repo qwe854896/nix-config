@@ -39,6 +39,17 @@ in {
             (_: _: {
               neovim = nixvimExtended.config.build.package;
             })
+          ]
+          ++ [
+            (_: _: {
+              inherit
+                (prev.lixPackageSets.stable)
+                nixpkgs-preview
+                nix-eval-jobs
+                nix-fast-build
+                colmena
+                ;
+            })
           ];
   };
 
@@ -114,9 +125,8 @@ in {
         else {}
       );
 
-    # auto upgrade nix to the unstable version
-    # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/tools/package-management/nix/default.nix#L284
-    package = pkgs.nixVersions.latest;
+    # https://lix.systems/add-to-config/
+    package = pkgs.lixPackageSets.stable.lix;
   };
 
   ### From https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry ###

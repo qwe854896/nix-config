@@ -22,12 +22,10 @@ _: [
   "obs"
 
   # Productivity Tools
-  "raycast"
   "moonlight"
   "iterm2"
 
   # Browsers
-  "firefox"
   "brave-browser"
   "zen"
 

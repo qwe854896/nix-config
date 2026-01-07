@@ -4,9 +4,11 @@
   sops-nix,
   lib,
   ...
-}: let
+}:
+let
   user = "jhcheng";
-in {
+in
+{
   imports = [
     ../../modules/darwin/dock
   ];
@@ -19,7 +21,7 @@ in {
 
   # Load configuration that is shared across systems
   environment.systemPackages = [
-    sops-nix.packages."${pkgs.system}".default
+    sops-nix.packages."${pkgs.stdenv.hostPlatform.system}".default
   ];
 
   home-manager = {
@@ -40,17 +42,17 @@ in {
     dock = {
       enable = true;
       entries = [
-        {path = "${pkgs.alacritty}/Applications/Alacritty.app/";}
-        {path = "/Applications/iTerm.app/";}
-        {path = "/Applications/Brave Browser.app/";}
-        {path = "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/";}
-        {path = "/Applications/Zen.app/";}
-        {path = "/Applications/Telegram.app/";}
-        {path = "/Applications/Signal.app/";}
-        {path = "${pkgs.vesktop}/Applications/Vesktop.app/";}
-        {path = "/Applications/Joplin.app/";}
-        {path = "/Applications/Moonlight.app/";}
-        {path = "/Applications/Visual Studio Code.app/";}
+        { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
+        { path = "/Applications/iTerm.app/"; }
+        { path = "/Applications/Brave Browser.app/"; }
+        { path = "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/"; }
+        { path = "/Applications/Zen.app/"; }
+        { path = "/Applications/Telegram.app/"; }
+        { path = "/Applications/Signal.app/"; }
+        { path = "${pkgs.vesktop}/Applications/Vesktop.app/"; }
+        { path = "/Applications/Joplin.app/"; }
+        { path = "/Applications/Moonlight.app/"; }
+        { path = "/Applications/Visual Studio Code.app/"; }
         {
           path = "${config.users.users.${user}.home}/.local/share/";
           section = "others";

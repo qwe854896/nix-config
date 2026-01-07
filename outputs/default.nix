@@ -14,7 +14,8 @@
   homebrew-jorgelog,
   sops-nix,
   ...
-} @ inputs: let
+}@inputs:
+let
   supportedSystems = [
     "x86_64-linux"
     "aarch64-darwin"
@@ -22,51 +23,54 @@
   forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
   # System builder with common modules
-  mkSystem = {
-    system,
-    hostName,
-    systemType,
-    extraModules ? [],
-  }: let
-    lib =
-      if systemType == "nixos"
-      then nixpkgs.lib
-      else if systemType == "darwin"
-      then nix-darwin.lib
-      else throw "Unsupported system type: ${systemType}";
+  mkSystem =
+    {
+      system,
+      hostName,
+      systemType,
+      extraModules ? [ ],
+    }:
+    let
+      lib =
+        if systemType == "nixos" then
+          nixpkgs.lib
+        else if systemType == "darwin" then
+          nix-darwin.lib
+        else
+          throw "Unsupported system type: ${systemType}";
 
-    baseModules =
-      if systemType == "nixos"
-      then [
-        vscode-server.nixosModules.default
-        (_: {services.vscode-server.enable = true;})
-        disko.nixosModules.default
-      ]
-      else [];
+      baseModules =
+        if systemType == "nixos" then
+          [
+            vscode-server.nixosModules.default
+            (_: { services.vscode-server.enable = true; })
+            disko.nixosModules.default
+          ]
+        else
+          [ ];
 
-    commonModules = [
-      ../modules/${systemType}
-      ../modules/${systemType}/home-manager.nix
-      ../modules/shared
-      ../secrets
-      home-manager."${systemType}Modules".home-manager
-      {
-        home-manager.extraSpecialArgs = inputs;
-      }
-      ../hosts/${hostName}
-      sops-nix."${systemType}Modules".default
-    ];
-  in
+      commonModules = [
+        ../modules/${systemType}
+        ../modules/${systemType}/home-manager.nix
+        ../modules/shared
+        ../secrets
+        home-manager."${systemType}Modules".home-manager
+        {
+          home-manager.extraSpecialArgs = inputs;
+        }
+        ../hosts/${hostName}
+        sops-nix."${systemType}Modules".default
+      ];
+    in
     lib."${systemType}System" {
       inherit system;
-      specialArgs =
-        inputs
-        // {
-          inherit system;
-        };
+      specialArgs = inputs // {
+        inherit system;
+      };
       modules = baseModules ++ commonModules ++ extraModules;
     };
-in {
+in
+{
   nixosConfigurations = {
     siber = mkSystem {
       systemType = "nixos";
@@ -107,13 +111,13 @@ in {
   };
 
   # Formatter and development shells
-  formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+  formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
 
   checks = forAllSystems (system: {
     pre-commit-check = pre-commit-hooks.lib.${system}.run {
       src = ../.;
       hooks = {
-        alejandra.enable = true;
+        nixfmt-rfc-style.enable = true;
         typos = {
           enable = true;
           settings = {
@@ -133,13 +137,15 @@ in {
   });
 
   devShells = forAllSystems (
-    system: let
+    system:
+    let
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
+    in
+    {
       default = pkgs.mkShell {
         packages = with pkgs; [
           bashInteractive
-          alejandra
+          nixfmt-rfc-style
           deadnix
           statix
           typos

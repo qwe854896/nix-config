@@ -1,5 +1,6 @@
-{pkgs}:
-with pkgs; [
+{ pkgs }:
+with pkgs;
+[
   # General packages for development and system management
   alacritty
   aspell
@@ -74,6 +75,7 @@ with pkgs; [
   ncdu
 
   # Nix utilities
+  nh
   nix-output-monitor
   hydra-check # check hydra(nix's build farm) for the build status of a package
   nix-index # A small utility to index nix store paths

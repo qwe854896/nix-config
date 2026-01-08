@@ -111,13 +111,13 @@ in
   };
 
   # Formatter and development shells
-  formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+  formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
 
   checks = forAllSystems (system: {
     pre-commit-check = pre-commit-hooks.lib.${system}.run {
       src = ../.;
       hooks = {
-        nixfmt-rfc-style.enable = true;
+        nixfmt.enable = true;
         typos = {
           enable = true;
           settings = {
@@ -145,7 +145,7 @@ in
       default = pkgs.mkShell {
         packages = with pkgs; [
           bashInteractive
-          nixfmt-rfc-style
+          nixfmt
           deadnix
           statix
           typos

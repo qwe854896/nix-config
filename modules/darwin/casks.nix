@@ -1,6 +1,7 @@
 _: [
   # Development Tools
   "visual-studio-code"
+  "visual-studio-code@insiders"
 
   # Communication Tools
   # "discord" ### installed via Vesktop

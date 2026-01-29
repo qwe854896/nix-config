@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # all fonts are linked to /nix/var/nix/profiles/system/sw/share/X11/fonts
   fonts = {
     # use fonts specified by user rather than default ones
@@ -15,7 +16,7 @@
       # 其中漢字部分叫 Noto Sans/Serif CJK SC/TC/HK/JP/KR，最後一個詞是地區變種。
       # noto-fonts # 大部分文字的常見樣式，不包含漢字
       # noto-fonts-cjk # 漢字部分
-      noto-fonts-emoji # 彩色的表情符號字體
+      noto-fonts-color-emoji # 彩色的表情符號字體
       # noto-fonts-extra # 提供額外的字重和寬度變種
 
       # 思源系列字體是 Adobe 主導的。其中漢字部分被稱為「思源黑體」和「思源宋體」，是由 Adobe + Google 共同開發的
@@ -37,10 +38,21 @@
     # the reason there's Noto Color Emoji everywhere is to override DejaVu's
     # B&W emojis that would sometimes show instead of some Color emojis
     fontconfig.defaultFonts = {
-      serif = ["Source Han Serif SC" "Source Han Serif TC" "Noto Color Emoji"];
-      sansSerif = ["Source Han Sans SC" "Source Han Sans TC" "Noto Color Emoji"];
-      monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
-      emoji = ["Noto Color Emoji"];
+      serif = [
+        "Source Han Serif SC"
+        "Source Han Serif TC"
+        "Noto Color Emoji"
+      ];
+      sansSerif = [
+        "Source Han Sans SC"
+        "Source Han Sans TC"
+        "Noto Color Emoji"
+      ];
+      monospace = [
+        "JetBrainsMono Nerd Font"
+        "Noto Color Emoji"
+      ];
+      emoji = [ "Noto Color Emoji" ];
     };
   };
 

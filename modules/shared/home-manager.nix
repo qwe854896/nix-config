@@ -1,16 +1,16 @@
 {
+  config,
   pkgs,
   lib,
   mysecrets,
   ...
-}: let
+}:
+let
   name = "Jun-Hong Cheng";
-  user =
-    if pkgs.stdenv.hostPlatform.isDarwin
-    then "jhcheng"
-    else "jhc";
+  user = if pkgs.stdenv.hostPlatform.isDarwin then "jhcheng" else "jhc";
   email = "qwe854896@gmail.com";
-in {
+in
+{
   # Let Home Manager install and manage itself.
   home-manager.enable = true;
 
@@ -21,7 +21,7 @@ in {
   zsh = {
     enable = true;
     autocd = false;
-    cdpath = ["~/.local/share/src"];
+    cdpath = [ "~/.local/share/src" ];
     plugins = [
       {
         name = "powerlevel10k";
@@ -69,6 +69,8 @@ in {
       # Always color ls and group directories
       alias ls='ls --color=auto'
     '';
+
+    dotDir = "${config.xdg.configHome}/zsh";
   };
 
   fish = {
@@ -77,7 +79,7 @@ in {
 
   git = {
     enable = true;
-    ignores = ["*.swp"];
+    ignores = [ "*.swp" ];
     includes = [
       {
         # use different email & name for work
@@ -354,10 +356,7 @@ in {
     font = {
       name = "JetBrainsMono Nerd Font";
       # use different font size on macOS
-      size =
-        if pkgs.stdenv.isDarwin
-        then 14
-        else 13;
+      size = if pkgs.stdenv.isDarwin then 14 else 13;
     };
 
     # consistent with wezterm
@@ -379,13 +378,13 @@ in {
     };
 
     # macOS specific settings
-    darwinLaunchOptions = ["--start-as=maximized"];
+    darwinLaunchOptions = [ "--start-as=maximized" ];
   };
 
   ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks."*" = {};
+    matchBlocks."*" = { };
     includes = [
       (lib.mkIf pkgs.stdenv.hostPlatform.isLinux "/home/${user}/.ssh/config_external")
       (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "/Users/${user}/.ssh/config_external")
@@ -471,11 +470,12 @@ in {
   gpg = {
     enable = true;
     homedir =
-      if pkgs.stdenv.hostPlatform.isLinux
-      then "/home/${user}/.gnupg"
-      else if pkgs.stdenv.hostPlatform.isDarwin
-      then "/Users/${user}/.gnupg"
-      else "";
+      if pkgs.stdenv.hostPlatform.isLinux then
+        "/home/${user}/.gnupg"
+      else if pkgs.stdenv.hostPlatform.isDarwin then
+        "/Users/${user}/.gnupg"
+      else
+        "";
 
     publicKeys = [
       {
@@ -550,11 +550,12 @@ in {
     settings = {
       # TODO: need to separate config
       PASSWORD_STORE_DIR =
-        if pkgs.stdenv.hostPlatform.isLinux
-        then "/home/${user}/.password-store"
-        else if pkgs.stdenv.hostPlatform.isDarwin
-        then "/Users/${user}/.password-store"
-        else "";
+        if pkgs.stdenv.hostPlatform.isLinux then
+          "/home/${user}/.password-store"
+        else if pkgs.stdenv.hostPlatform.isDarwin then
+          "/Users/${user}/.password-store"
+        else
+          "";
       PASSWORD_STORE_KEY = "64DAB0AA";
       PASSWORD_SIGNING_KEY = "7078C5B8";
       PASSWORD_STORE_CLIP_TIME = "60";

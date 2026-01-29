@@ -144,7 +144,6 @@ with pkgs;
 
   # GUI tools
   moonlight-qt
-  vesktop
 
   ### From Home Manager ###
   sad # CLI search and replace, just like sed, but with diff preview.

@@ -5,6 +5,7 @@ _: [
 
   # Communication Tools
   # "discord" ### installed via Vesktop
+  "vesktop"
   "telegram"
   "signal"
 

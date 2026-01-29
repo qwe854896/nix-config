@@ -5,7 +5,6 @@
   nix-darwin,
   nix-homebrew,
   home-manager,
-  vscode-server,
   disko,
   pre-commit-hooks,
   homebrew-core,
@@ -42,8 +41,6 @@ let
       baseModules =
         if systemType == "nixos" then
           [
-            vscode-server.nixosModules.default
-            (_: { services.vscode-server.enable = true; })
             disko.nixosModules.default
           ]
         else

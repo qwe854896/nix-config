@@ -5,16 +5,8 @@
   nixvim,
   system,
   ...
-}: let
-  nixvimExtended = nixvim.nixvimConfigurations.${system}.nixvim.extendModules {
-    modules = [
-      {
-        colorschemes.catppuccin.enable = true;
-        plugins.lsp.servers.zls.enable = true;
-      }
-    ];
-  };
-in {
+}:
+{
   # Allow unfree packages
   nixpkgs = {
     config = {
@@ -29,28 +21,27 @@ in {
       let
         path = ../../overlays;
       in
-        with builtins;
-          map (n: import (path + ("/" + n))) (
-            filter (n: match ".*\\.nix" n != null || pathExists (path + ("/" + n + "/default.nix"))) (
-              attrNames (readDir path)
-            )
-          )
-          ++ [
-            (_: _: {
-              neovim = nixvimExtended.config.build.package;
-            })
-          ]
-          ++ [
-            (_: _: {
-              inherit
-                (prev.lixPackageSets.stable)
-                nixpkgs-preview
-                nix-eval-jobs
-                nix-fast-build
-                colmena
-                ;
-            })
-          ];
+      with builtins;
+      map (n: import (path + ("/" + n))) (
+        filter (n: match ".*\\.nix" n != null || pathExists (path + ("/" + n + "/default.nix"))) (
+          attrNames (readDir path)
+        )
+      )
+      ++ [
+        (_: _: {
+          neovim = nixvim.packages.${system}.default;
+        })
+      ]
+      ++ [
+        (_: _: {
+          inherit (prev.lixPackageSets.stable)
+            nixpkgs-preview
+            nix-eval-jobs
+            nix-fast-build
+            colmena
+            ;
+        })
+      ];
   };
 
   # Nix Settings
@@ -101,29 +92,30 @@ in {
     };
 
     # do garbage collection weekly to keep disk usage low
-    gc =
-      {
-        automatic = lib.mkDefault true;
-        options = lib.mkDefault "--delete-older-than 7d";
-      }
-      // (
-        if pkgs.stdenv.hostPlatform.isLinux
-        then {
+    gc = {
+      automatic = lib.mkDefault true;
+      options = lib.mkDefault "--delete-older-than 7d";
+    }
+    // (
+      if pkgs.stdenv.hostPlatform.isLinux then
+        {
           dates = lib.mkDefault "weekly";
         }
-        else {}
-      )
-      // (
-        if pkgs.stdenv.hostPlatform.isDarwin
-        then {
+      else
+        { }
+    )
+    // (
+      if pkgs.stdenv.hostPlatform.isDarwin then
+        {
           interval = {
             Weekday = 0;
             Hour = 2;
             Minute = 0;
           };
         }
-        else {}
-      );
+      else
+        { }
+    );
 
     # https://lix.systems/add-to-config/
     package = pkgs.lixPackageSets.stable.lix;
@@ -140,5 +132,5 @@ in {
   environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
 
   # discard all the default paths, and only use the one from this flake.
-  nix.nixPath = lib.mkForce ["/etc/nix/inputs"];
+  nix.nixPath = lib.mkForce [ "/etc/nix/inputs" ];
 }

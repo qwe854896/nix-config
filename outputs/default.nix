@@ -9,7 +9,6 @@
   pre-commit-hooks,
   homebrew-core,
   homebrew-cask,
-  homebrew-bundle,
   homebrew-jorgelog,
   sops-nix,
   ...
@@ -96,7 +95,6 @@ in
             taps = {
               "homebrew/homebrew-core" = homebrew-core;
               "homebrew/homebrew-cask" = homebrew-cask;
-              "homebrew/homebrew-bundle" = homebrew-bundle;
               "jorgelbg/homebrew-tap" = homebrew-jorgelog;
             };
             mutableTaps = false;
@@ -146,7 +144,7 @@ in
           deadnix
           statix
           typos
-          nodePackages.prettier
+          prettier
         ];
         inherit (self.checks.${system}.pre-commit-check) shellHook;
         buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;

@@ -93,6 +93,7 @@ in
     signing = {
       key = "97983B8C7078C5B8";
       signByDefault = true;
+      format = null;
     };
     settings = {
       user = {
